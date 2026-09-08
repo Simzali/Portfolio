@@ -35,11 +35,10 @@ export const profile: Profile = {
 
   avatar: '/sim.jpg',
 
-  // TODO(simra): `resumeUrl` is deliberately absent. The Google Doc version of
-  // your resume needs a login, so it would be a dead link for anyone reading
-  // this page. Export it to PDF, drop it in `public/`, and add:
-  //   resumeUrl: '/simra-ali-resume.pdf',
-  // The "Download resume" button appears on its own once the field is there.
+  // Converted from Simra_Ali_College_Application_Resume_2026.docx in Drive.
+  // Regenerate it whenever the Drive copy changes - this file is the one the
+  // public page serves, and nothing keeps the two in step automatically.
+  resumeUrl: '/simra-ali-resume.pdf',
 
   // The page, top to bottom, under the hero. Timeline first: the work is the
   // argument, honors are the corroboration, and contact details are what

@@ -5,22 +5,39 @@ import { TimelineEntry } from './TimelineEntry';
 import { TimelineFilter } from './TimelineFilter';
 
 /**
- * Most recent first. `null` endDate means "present", which sorts above
- * everything finished. Ties break on startDate, also descending.
+ * Still going first, then most recently finished - and within either group,
+ * whatever has been running longest.
+ *
+ * The "longest running" half is the part worth explaining. Among things that
+ * are all still true, the interesting one is the commitment somebody has held
+ * for three years, not the one they picked up last term, so ongoing entries
+ * sort by *earliest* start. Finished entries still lead with recency, because
+ * a thing that ended four years ago is not more interesting for having lasted a
+ * while; duration only breaks ties between two that ended together.
  *
  * This exists because array order in `profile.ts` is not a source of truth -
  * that file gets rewritten wholesale when you import a resume, and nothing
- * guarantees the order survives.
+ * guarantees the order survives. A genuine tie is the one exception: the sort
+ * is stable, so entries that start and end together stay in the order they were
+ * written, which is the only place the author gets to express a preference.
+ *
+ * See docs/adr/ADR-012-timeline-order.md.
  */
 function sortTimeline(entries: Entry[]): Entry[] {
   return [...entries].sort((a, b) => {
+    // Still going beats finished, whatever the dates say.
     if (a.endDate === null && b.endDate !== null) return -1;
     if (b.endDate === null && a.endDate !== null) return 1;
+
+    // Both finished: the one that ended most recently comes first.
     if (a.endDate !== null && b.endDate !== null && a.endDate !== b.endDate) {
       return a.endDate < b.endDate ? 1 : -1;
     }
-    if (a.startDate === b.startDate) return 0;
-    return a.startDate < b.startDate ? 1 : -1;
+
+    // Same standing: the one that has been running longer comes first.
+    if (a.startDate !== b.startDate) return a.startDate < b.startDate ? -1 : 1;
+
+    return 0;
   });
 }
 

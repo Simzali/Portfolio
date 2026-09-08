@@ -103,6 +103,29 @@ export const timelineEntrySchema = z.object({
 });
 
 /**
+ * An award, with no date finer than a year - because that is how honors come.
+ *
+ * Deliberately not a timeline entry: `timelineEntrySchema` requires a
+ * `YYYY-MM` start, and making one up for "National Spanish Exam silver medal"
+ * would be inventing content. See docs/adr/ADR-011-honors-section.md.
+ */
+export const honorSchema = z.object({
+  /** Stable, unique, kebab-case. Used as the React key. */
+  id: z.string().min(1),
+  /** "FIRST Leadership Award (Dean's List) Semi-Finalist" */
+  title: z.string().min(1),
+  /** Who gave it. Omit when the title already says. */
+  organization: z.string().optional(),
+  /** "2026", or "2024-2026" for something held across years. */
+  year: z
+    .string()
+    .regex(/^\d{4}(-\d{4})?$/, 'year must be "2026" or "2024-2026" - honors have no month')
+    .optional(),
+  /** One short clause, when the title does not explain itself. */
+  note: z.string().optional(),
+});
+
+/**
  * The sections of the page, in the order `profile.sections` may name them.
  *
  * This is the single list of sections that exist. The schema validates against
@@ -113,7 +136,7 @@ export const timelineEntrySchema = z.object({
  * The hero is not in this list on purpose. It carries the `<h1>` and the `#top`
  * anchor, and every page needs exactly one of it. See ADR-006.
  */
-export const SECTION_IDS = ['timeline', 'links'] as const;
+export const SECTION_IDS = ['timeline', 'honors', 'links'] as const;
 export type SectionId = (typeof SECTION_IDS)[number];
 
 export const profileSchema = z.object({
@@ -134,6 +157,11 @@ export const profileSchema = z.object({
   ).optional(),
   links: z.array(linkSchema).default([]),
   timeline: z.array(timelineEntrySchema).min(1),
+  /**
+   * Awards with no timeline entry to sit on. An honor already carried by an
+   * entry's `highlights` does not belong here as well - see ADR-011.
+   */
+  honors: z.array(honorSchema).default([]),
 
   /**
    * Section order, top to bottom. Drives the page and the anchor nav from the
@@ -150,6 +178,7 @@ export const profileSchema = z.object({
 
 export type Link = z.infer<typeof linkSchema>;
 export type Image = z.infer<typeof imageSchema>;
+export type Honor = z.infer<typeof honorSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type TimelineEntry = z.infer<typeof timelineEntrySchema>;
 

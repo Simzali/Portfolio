@@ -5,22 +5,37 @@
  * Anything you declare here becomes a utility: --color-brand-500 gives you
  * bg-brand-500, text-brand-500, border-brand-500, and so on.
  *
- * Change these six values and the whole site changes with them.
+ * Change these values and the whole site changes with them. That is the only
+ * place the theme lives - no `dark:` variants, no per-component overrides.
+ *
+ * READ THIS BEFORE EDITING. This site is dark (see
+ * docs/adr/ADR-010-dark-theme.md), and the token numbers name *roles*, not
+ * lightness. `ink-50` is the page and is therefore the darkest ink; `ink-950`
+ * is a heading and is nearly white. `brand-700` is brand-coloured text on a
+ * dark page, so it is the lightest brand, while `brand-600` stays dark enough
+ * to carry white text on top of it. Reading the scale as a lightness ladder
+ * will get you a heading you cannot see.
  */
 @theme {
-  --color-ink-50: oklch(0.98 0.005 285);
-  --color-ink-100: oklch(0.95 0.008 285);
-  --color-ink-200: oklch(0.89 0.01 285);
-  --color-ink-400: oklch(0.65 0.02 285);
-  --color-ink-600: oklch(0.46 0.025 285);
-  --color-ink-800: oklch(0.28 0.03 285);
-  --color-ink-950: oklch(0.17 0.03 285);
+  /* Page, panels, borders - darkest to lightest. */
+  --color-ink-50: oklch(0.17 0.012 285); /* the page itself */
+  --color-ink-100: oklch(0.26 0.014 285); /* a filled chip or marker */
+  --color-ink-200: oklch(0.32 0.015 285); /* every border on the page */
 
-  --color-brand-100: oklch(0.93 0.05 305);
-  --color-brand-300: oklch(0.78 0.13 305);
-  --color-brand-500: oklch(0.58 0.21 305);
-  --color-brand-600: oklch(0.51 0.2 305);
-  --color-brand-700: oklch(0.43 0.17 305);
+  /* Text, quietest to loudest. All checked against --color-ink-50. */
+  --color-ink-400: oklch(0.68 0.02 285); /* dates, captions, the footer */
+  --color-ink-600: oklch(0.8 0.018 285); /* bullets, nav links */
+  --color-ink-800: oklch(0.9 0.012 285); /* body copy */
+  --color-ink-950: oklch(0.97 0.005 285); /* headings */
+
+  /* A panel raised off the page: tag chips, the links card, its buttons. */
+  --color-surface: oklch(0.22 0.014 285);
+
+  --color-brand-100: oklch(0.3 0.07 305); /* tinted wash behind a heading */
+  --color-brand-300: oklch(0.72 0.13 305); /* underlines, list markers, rings */
+  --color-brand-500: oklch(0.7 0.18 305); /* small icons, the dot lattice */
+  --color-brand-600: oklch(0.47 0.2 305); /* solid fills that carry white text */
+  --color-brand-700: oklch(0.83 0.12 305); /* brand-coloured text */
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -37,6 +52,12 @@
     scroll-behavior: smooth;
     /* Anchor targets should not hide under the sticky nav. */
     scroll-padding-top: 5rem;
+    /*
+     * Tells the browser to draw its own furniture dark too - scrollbars, the
+     * default focus ring, anything native. Without it a dark page keeps a
+     * bright white scrollbar down its right edge.
+     */
+    color-scheme: dark;
   }
 
   body {
@@ -45,7 +66,7 @@
 
   /* Visible focus on everything interactive, in one rule, for everyone. */
   :focus-visible {
-    @apply outline-brand-600 rounded-sm outline-2 outline-offset-2;
+    @apply outline-brand-300 rounded-sm outline-2 outline-offset-2;
   }
 
   @media (prefers-reduced-motion: reduce) {

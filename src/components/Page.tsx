@@ -18,8 +18,14 @@ type PageProps = {
  *
  * The hero is fixed at the top; everything after it is ordered by
  * `profile.sections`. See ADR-006.
+ *
+ * A section that would render nothing is dropped here, once, and the surviving
+ * list is what both the nav and the page body walk - so the nav can never offer
+ * a link to a section that is not on the page. See ADR-011.
  */
 export function Page({ profile }: PageProps) {
+  const visible = profile.sections.filter((id) => !SECTIONS[id].isEmpty(profile));
+
   return (
     <>
       <a
@@ -29,11 +35,11 @@ export function Page({ profile }: PageProps) {
         Skip to content
       </a>
 
-      <AnchorNav sections={profile.sections} />
+      <AnchorNav sections={visible} />
 
       <main id="main">
         <Hero profile={profile} />
-        {profile.sections.map((id) => (
+        {visible.map((id) => (
           <Fragment key={id}>{SECTIONS[id].render(profile)}</Fragment>
         ))}
       </main>

@@ -147,3 +147,87 @@ describe('Timeline filter', () => {
     expect(visibleEntryIds()).toEqual(['current-job', 'side-project', 'old-job']);
   });
 });
+
+/**
+ * Ordering, on its own. See docs/adr/ADR-012-timeline-order.md.
+ *
+ * The rule that changed: among entries that are all still going, the one that
+ * has been running longest leads, because "when did you start" is not a recency
+ * signal when every one of them is equally current.
+ */
+describe('Timeline order', () => {
+  const ongoing = (id: string, startDate: string): TimelineEntry => ({
+    id,
+    kind: 'work',
+    title: id,
+    startDate,
+    endDate: null,
+    summary: 'Still going.',
+    highlights: [],
+    tags: [],
+    links: [],
+  });
+
+  const finished = (id: string, startDate: string, endDate: string): TimelineEntry => ({
+    ...ongoing(id, startDate),
+    endDate,
+    summary: 'Over.',
+  });
+
+  it('puts the longest-running ongoing entry first', () => {
+    render(
+      <Timeline
+        entries={[ongoing('newest', '2025-09'), ongoing('oldest', '2023-09'), ongoing('middle', '2024-09')]}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['oldest', 'middle', 'newest']);
+  });
+
+  it('still leads with recency among finished entries, not with duration', () => {
+    // `long-and-old` ran for four years; it is still over, and `short-and-recent`
+    // ended last month. Duration must not promote a finished entry.
+    render(
+      <Timeline
+        entries={[
+          finished('long-and-old', '2015-01', '2019-01'),
+          finished('short-and-recent', '2025-08', '2025-09'),
+        ]}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['short-and-recent', 'long-and-old']);
+  });
+
+  it('breaks a same-end-date tie towards the one that ran longer', () => {
+    render(
+      <Timeline
+        entries={[finished('brief', '2025-08', '2025-09'), finished('long', '2023-01', '2025-09')]}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['long', 'brief']);
+  });
+
+  it('keeps an ongoing entry above a finished one that ended in the future', () => {
+    render(<Timeline entries={[finished('ended', '2020-01', '2099-01'), ongoing('going', '2024-01')]} />);
+
+    expect(visibleEntryIds()).toEqual(['going', 'ended']);
+  });
+
+  /*
+   * Four of Simra's entries start and end on exactly the same dates, so the
+   * dates cannot choose between them and something has to. The sort is stable,
+   * which makes the order in `profile.ts` the tie-break - the one place the
+   * author gets a say. This is documented behaviour, not an accident.
+   */
+  it('leaves entries that tie exactly in the order they were written', () => {
+    render(
+      <Timeline
+        entries={[ongoing('written-first', '2023-09'), ongoing('written-second', '2023-09')]}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['written-first', 'written-second']);
+  });
+});

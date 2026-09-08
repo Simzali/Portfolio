@@ -13,7 +13,7 @@ import { SECTION_IDS, type Profile, type SectionId } from '../src/content/schema
  * not on the page at all. Both used to be one forgotten edit away, because the
  * order was written down in two files.
  */
-function profileWith(sections: SectionId[]): Profile {
+function profileWith(sections: SectionId[], overrides: Partial<Profile> = {}): Profile {
   return {
     name: 'Ada Lovelace',
     headline: 'Mathematician. I write about engines.',
@@ -21,6 +21,7 @@ function profileWith(sections: SectionId[]): Profile {
     avatar: '/avatar-placeholder.svg',
     sections,
     links: [{ label: 'Email', href: 'mailto:ada@example.com' }],
+    honors: [{ id: 'note-g', title: 'Note G' }],
     timeline: [
       {
         id: 'analytical-engine',
@@ -34,6 +35,7 @@ function profileWith(sections: SectionId[]): Profile {
         links: [],
       },
     ],
+    ...overrides,
   };
 }
 
@@ -88,6 +90,32 @@ describe('page sections', () => {
         `the nav links to #${target}, which is not on the page`,
       ).not.toBeNull();
     }
+  });
+
+  /*
+   * `profile.sections` defaults to every id in SECTION_IDS, and most people who
+   * fork this have no honors and some have no links - so a named-but-empty
+   * section is the common case, not the edge one. It used to render nothing and
+   * still get a nav link, which is a link to nowhere. See ADR-011.
+   */
+  it.each([
+    ['honors', { honors: [] }],
+    ['links', { links: [], resumeUrl: undefined }],
+  ] as Array<[SectionId, Partial<Profile>]>)(
+    'drops %s from the nav when it has nothing to show',
+    (id, empty) => {
+      const { container } = render(<Page profile={profileWith([...SECTION_IDS], empty)} />);
+
+      expect(pageOrder(container)).not.toContain(id);
+      expect(navOrder(container)).not.toContain(id);
+    },
+  );
+
+  it('leaves a named section in place when it does have something to show', () => {
+    const { container } = render(<Page profile={profileWith([...SECTION_IDS])} />);
+
+    expect(pageOrder(container)).toEqual(['top', ...SECTION_IDS]);
+    expect(navOrder(container)).toEqual(pageOrder(container));
   });
 
   /*

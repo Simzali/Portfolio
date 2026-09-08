@@ -27,7 +27,7 @@ export function LinksBlock({ links, resumeUrl }: LinksBlockProps) {
     // made the spacing depend on the order, and `profile.sections` can change
     // that. See ADR-006.
     <section id="links" className="scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
-      <div className="border-ink-200 from-brand-100/60 mx-auto max-w-3xl rounded-2xl border bg-gradient-to-br to-white p-6 sm:p-9">
+      <div className="border-ink-200 from-brand-100/60 to-surface mx-auto max-w-3xl rounded-2xl border bg-gradient-to-br p-6 sm:p-9">
         <h2 className="text-ink-950 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
           <span className="bg-brand-600 grid h-9 w-9 shrink-0 place-items-center rounded-lg text-white">
             <Send aria-hidden="true" className="h-4.5 w-4.5" />
@@ -42,7 +42,7 @@ export function LinksBlock({ links, resumeUrl }: LinksBlockProps) {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="border-ink-200 text-ink-800 hover:border-brand-500 hover:text-brand-700 inline-flex items-center gap-2 rounded-lg border bg-white px-4 py-2 font-medium shadow-xs transition-colors"
+                  className="border-ink-200 text-ink-800 hover:border-brand-500 hover:text-brand-700 bg-surface inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-medium shadow-xs transition-colors"
                 >
                   <Icon aria-hidden="true" className="h-4 w-4" />
                   {link.label}

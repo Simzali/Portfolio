@@ -96,7 +96,7 @@ export function TimelineEntry({ entry }: TimelineEntryProps) {
             const TagIcon = iconForTag(tag);
             return (
               <li key={tag}>
-                <span className="border-ink-200 text-ink-600 inline-flex items-center gap-1.5 rounded-full border bg-white px-2.5 py-1 text-xs font-medium">
+                <span className="border-ink-200 text-ink-600 bg-surface inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium">
                   <TagIcon aria-hidden="true" className="text-brand-500 h-3 w-3" />
                   {tag}
                 </span>

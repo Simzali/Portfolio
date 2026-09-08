@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react';
 import type { Profile } from '../content/schema';
+import { Highlights } from './Highlights';
 
 type HeroProps = {
   profile: Profile;
@@ -56,6 +57,8 @@ export function Hero({ profile }: HeroProps) {
         <p className="text-ink-600 mt-7 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg">
           {profile.intro}
         </p>
+
+        {profile.highlights.length > 0 ? <Highlights items={profile.highlights} /> : null}
       </div>
     </section>
   );

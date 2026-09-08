@@ -26,6 +26,7 @@ const fixture: Profile = {
   avatar: '/avatar-placeholder.svg',
   sections: ['timeline'],
   links: [],
+  highlights: [],
   honors: [],
   timeline: [
     {

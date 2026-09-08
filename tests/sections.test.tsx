@@ -22,6 +22,7 @@ function profileWith(sections: SectionId[], overrides: Partial<Profile> = {}): P
     sections,
     links: [{ label: 'Email', href: 'mailto:ada@example.com' }],
     honors: [{ id: 'note-g', title: 'Note G' }],
+    highlights: [],
     timeline: [
       {
         id: 'analytical-engine',

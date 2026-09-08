@@ -41,6 +41,31 @@ export const profile: Profile = {
   // See docs/adr/ADR-006-section-order.md.
   sections: ['timeline', 'honors', 'links'],
 
+  // The four facts a visitor gets if they read nothing else. Every href below
+  // was fetched and confirmed live on 2026-09-08 - a dead source link reads as
+  // a claim that was never true. See docs/adr/ADR-013-hero-highlights.md.
+  highlights: [
+    {
+      value: '#1 in MA, #10 in the world',
+      label: 'FTC 3565, of 7,800+ teams (2026)',
+      href: 'https://ftc-events.firstinspires.org/2024/USMASPQ/awards',
+    },
+    {
+      value: 'FIRST Dean’s List Semi-Finalist',
+      label: 'FIRST leadership award, 2026',
+    },
+    {
+      value: 'Three 1st-place finishes',
+      label: 'Hackathons and CAD competitions, 2024-25',
+      href: 'https://simzali.github.io/Echo-Awareness/',
+    },
+    {
+      value: 'MIT BWSI and Harvard SSP',
+      label: 'Autonomous systems coursework',
+      href: 'https://coursebrowser.dce.harvard.edu/course/robotics-autonomous-vehicles-drones-and-artificial-intelligence/',
+    },
+  ],
+
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sim-ali' },
     { label: 'GitHub', href: 'https://github.com/Simzali' },
@@ -118,7 +143,7 @@ export const profile: Profile = {
         'Leadership',
         'FRC',
       ],
-      links: [],
+      links: [{ label: 'Team site', href: 'https://www.stormgears.org/' }],
     },
     {
       id: 'ghost-robotics-ftc-3565',
@@ -159,7 +184,7 @@ export const profile: Profile = {
         'Worked up to it through BWSI online coursework from February 2024: Basics of ASICs, Microelectronics & Hardware Development, Python Core, Version Control and UNIX, and Git/GitHub.',
       ],
       tags: ['Drones', 'Autonomous Systems', 'Computer Vision', 'Control Systems', 'Python'],
-      links: [],
+      links: [{ label: 'BWSI', href: 'https://beaverworks.ll.mit.edu/CMS/bw/bwsi' }],
     },
     {
       id: 'bae-women-in-technology',
@@ -179,7 +204,12 @@ export const profile: Profile = {
         'The failure-analysis lab was the one that stuck: an entire discipline built around asking why something broke.',
       ],
       tags: ['RF', 'Signal Processing', 'Hardware', 'Electrical'],
-      links: [],
+      links: [
+        {
+          label: 'Program',
+          href: 'https://www.baesystems.com/en-us/who-we-are/electronic-systems/community-investment/stem-outreach/women-in-technology',
+        },
+      ],
     },
     {
       id: 'westford-broadcasting-club',
@@ -225,7 +255,10 @@ export const profile: Profile = {
         'Focus on mentoring girls into technical roles and, the harder half, keeping them there.',
       ],
       tags: ['Outreach', 'Mentorship', 'Robotics', 'Teaching'],
-      links: [],
+      links: [
+        { label: 'Girl Scout STEM Fest', href: 'https://www.stormgears.org/2025/05/04/girl-scouts-stem-fest-2025/' },
+        { label: 'Apple Blossom Parade', href: 'https://www.stormgears.org/2025/05/21/apple-blossom-parade-2025/' },
+      ],
     },
     {
       id: 'harvard-summer-robotics-ai',
@@ -241,7 +274,12 @@ export const profile: Profile = {
         'Co-led "Solve It, Defend It!" and developed Flood Watch, a concept for tracking floods using drone and autonomous-vehicle data.',
       ],
       tags: ['SLAM', 'Reinforcement Learning', 'Autonomous Systems', 'Computer Vision'],
-      links: [],
+      links: [
+        {
+          label: 'Course',
+          href: 'https://coursebrowser.dce.harvard.edu/course/robotics-autonomous-vehicles-drones-and-artificial-intelligence/',
+        },
+      ],
     },
 
     {
@@ -275,9 +313,9 @@ export const profile: Profile = {
       id: 'demoulas-cashier',
       kind: 'work',
       title: 'Cashier',
-      organization: 'Demoulas Super Markets',
-      startDate: '2023-08',
-      endDate: '2025-01',
+      organization: 'Demoulas (Market Basket)',
+      startDate: '2023-07',
+      endDate: '2024-12',
       location: 'Westford, MA',
       summary:
         'A year and a half on a register, running alongside school and two robotics teams.',
@@ -287,6 +325,25 @@ export const profile: Profile = {
     },
 
     // ------------------------------------------------------------ projects
+    {
+      id: 'firefly',
+      kind: 'project',
+      title: 'Firefly',
+      organization: 'Girls Who Code game design project',
+      startDate: '2025-07',
+      endDate: '2025-08',
+      summary:
+        'A browser game you steer with your hands - no keyboard, no mouse. The webcam reads hand gestures and those become the controls.',
+      highlights: [
+        'Built with the p5play and p5.js libraries; hand-gesture input via TensorFlow.js.',
+      ],
+      tags: ['JavaScript', 'TensorFlow', 'Computer Vision', 'Game Design'],
+      links: [
+        { label: 'Play it', href: 'https://simzali.github.io/Firefly-Game/Firefly/index.html' },
+        { label: 'Source', href: 'https://github.com/Simzali/Firefly-Game' },
+      ],
+    },
+
     {
       id: 'the-bat',
       kind: 'project',
@@ -302,7 +359,7 @@ export const profile: Profile = {
         'Ultrasonic ranging turned into feedback a person can act on, built and demoed inside a hackathon.',
       ],
       tags: ['Ultrasonic', 'Sensors', 'Assistive Tech', 'Hardware'],
-      links: [],
+      links: [{ label: 'Project site', href: 'https://simzali.github.io/Echo-Awareness/' }],
     },
     {
       id: 'hireable',
@@ -315,7 +372,7 @@ export const profile: Profile = {
         'A platform connecting people with disabilities to employers who are actually set up to hire them.',
       highlights: ['First place at NetScout Tech for Good.'],
       tags: ['Web', 'Accessibility', 'Social Impact'],
-      links: [],
+      links: [{ label: 'Project site', href: 'https://sites.google.com/view/hireable/home' }],
     },
     {
       id: 'vtxcads-cadathon',

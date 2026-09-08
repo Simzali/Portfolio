@@ -103,6 +103,23 @@ export const timelineEntrySchema = z.object({
 });
 
 /**
+ * One cell of the hero highlights band: the fact, what it is, and optionally
+ * somewhere that proves it.
+ *
+ * Capped at four in `profileSchema` rather than by convention - a fifth cell
+ * is too narrow to read on a 320px phone, and the constraint is the point of
+ * the element. See docs/adr/ADR-013-hero-highlights.md.
+ */
+export const highlightSchema = z.object({
+  /** "#1 in MA - #10 in the world" */
+  value: z.string().min(1),
+  /** "FTC 3565, out of 7,800+ teams" */
+  label: z.string().min(1),
+  /** A public source for the claim. Same scheme rules as every other link. */
+  href: safeUrl(['https'], 'a highlight source must be an https:// URL').optional(),
+});
+
+/**
  * An award, with no date finer than a year - because that is how honors come.
  *
  * Deliberately not a timeline entry: `timelineEntrySchema` requires a
@@ -162,6 +179,12 @@ export const profileSchema = z.object({
    * entry's `highlights` does not belong here as well - see ADR-011.
    */
   honors: z.array(honorSchema).default([]),
+  /**
+   * The four facts worth reading if a visitor reads nothing else. Four is the
+   * cap because the band is one row on a phone; a fifth fact means one of the
+   * four was not a highlight. See ADR-013.
+   */
+  highlights: z.array(highlightSchema).max(4).default([]),
 
   /**
    * Section order, top to bottom. Drives the page and the anchor nav from the
@@ -179,6 +202,7 @@ export const profileSchema = z.object({
 export type Link = z.infer<typeof linkSchema>;
 export type Image = z.infer<typeof imageSchema>;
 export type Honor = z.infer<typeof honorSchema>;
+export type Highlight = z.infer<typeof highlightSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type TimelineEntry = z.infer<typeof timelineEntrySchema>;
 

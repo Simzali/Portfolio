@@ -15,12 +15,7 @@
  *
  * Ordering does not matter. `Timeline` sorts by date, most recent first.
  *
- * ---------------------------------------------------------------------------
- * TODO(simra): four dates are still marked `TODO month` - the start of the BWSI
- * summer weeks, and the three hackathons. The year is right in every case; the
- * month is a placeholder, and the only thing it changes is the order those
- * three first places appear in. Everything else is confirmed.
- * ---------------------------------------------------------------------------
+ * Every date on this page is confirmed. Nothing here is a placeholder.
  */
 import type { Profile } from './schema.ts';
 
@@ -128,13 +123,13 @@ export const profile: Profile = {
     {
       id: 'ghost-robotics-ftc-3565',
       kind: 'work',
-      title: 'Vision Software, CAD & Drive Team',
+      title: 'Vision Software, Onshape CAD, Media Manager',
       organization: 'FIRST Tech Challenge - Ghost Robotics 3565',
       startDate: '2023-09',
       endDate: null,
       location: 'Westford, MA',
       summary:
-        'A ten-person team, where titles do not help much. I work across Onshape CAD, computer vision, strategy, media, and outreach - deliberately, instead of picking one lane.',
+        'A 10-person team, where titles do not help much. I work across Onshape CAD, computer vision, strategy, media, and outreach.',
       highlights: [
         '2026 Massachusetts State Champion and Winning Alliance Captain.',
         '2026 FIRST Championship, Ross Division Winner.',
@@ -150,9 +145,9 @@ export const profile: Profile = {
       kind: 'work',
       title: 'Autonomous Air Vehicle Racing',
       organization: 'MIT Beaver Works Summer Institute, AeroAstro',
-      // End confirmed by LinkedIn, which dates BWSI overall Feb 2024 - Aug 2026.
-      // The start is derived: four weeks, ending in August, puts it in July.
-      startDate: '2026-07', // TODO month
+      // Confirmed by Simra. LinkedIn dates BWSI overall Feb 2024 - Aug 2026,
+      // which pins the end; the July start is the four weeks before it.
+      startDate: '2026-07',
       endDate: '2026-08',
       location: 'Cambridge, MA',
       summary:
@@ -191,7 +186,7 @@ export const profile: Profile = {
       kind: 'work',
       title: 'Manager',
       organization: 'Westford Academy Broadcasting Club',
-      startDate: '2023-09',
+      startDate: '2024-09',
       endDate: null,
       summary: 'I coordinate club operations and still work the shows.',
       highlights: [
@@ -297,8 +292,8 @@ export const profile: Profile = {
       kind: 'project',
       title: 'The Bat',
       organization: 'Microsoft NERD GirlHacks',
-      startDate: '2025-10', // TODO month
-      endDate: '2025-10', // TODO month
+      startDate: '2025-06',
+      endDate: '2025-06',
       location: 'Cambridge, MA',
       summary:
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
@@ -314,8 +309,8 @@ export const profile: Profile = {
       kind: 'project',
       title: 'HireAble',
       organization: 'NetScout Tech for Good',
-      startDate: '2025-04', // TODO month
-      endDate: '2025-04', // TODO month
+      startDate: '2025-03',
+      endDate: '2025-03',
       summary:
         'A platform connecting people with disabilities to employers who are actually set up to hire them.',
       highlights: ['First place at NetScout Tech for Good.'],
@@ -327,8 +322,8 @@ export const profile: Profile = {
       kind: 'project',
       title: 'VTXCADs CADathon',
       organization: 'Phillips Exeter Academy Robotics',
-      startDate: '2025-03', // TODO month
-      endDate: '2025-03', // TODO month
+      startDate: '2024-12',
+      endDate: '2024-12',
       summary:
         'A CAD design competition, and the clearest test I have had of the SolidWorks I taught myself.',
       highlights: ['First place.'],

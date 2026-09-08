@@ -15,11 +15,7 @@
  *
  * Ordering does not matter. `Timeline` sorts by date, most recent first.
  *
- * ---------------------------------------------------------------------------
- * TODO(simra): one date is still marked `TODO month` - the start of the BWSI
- * summer weeks, derived from "four weeks" and a confirmed August end rather
- * than stated anywhere. Every other date on this page is confirmed.
- * ---------------------------------------------------------------------------
+ * Every date on this page is confirmed. Nothing here is a placeholder.
  */
 import type { Profile } from './schema.ts';
 
@@ -149,9 +145,9 @@ export const profile: Profile = {
       kind: 'work',
       title: 'Autonomous Air Vehicle Racing',
       organization: 'MIT Beaver Works Summer Institute, AeroAstro',
-      // End confirmed by LinkedIn, which dates BWSI overall Feb 2024 - Aug 2026.
-      // The start is derived: four weeks, ending in August, puts it in July.
-      startDate: '2026-07', // TODO month
+      // Confirmed by Simra. LinkedIn dates BWSI overall Feb 2024 - Aug 2026,
+      // which pins the end; the July start is the four weeks before it.
+      startDate: '2026-07',
       endDate: '2026-08',
       location: 'Cambridge, MA',
       summary:

@@ -35,9 +35,9 @@ export const profile: Profile = {
 
   avatar: '/sim.jpg',
 
-  // Converted from Simra_Ali_College_Application_Resume_2026.docx in Drive.
-  // Regenerate it whenever the Drive copy changes - this file is the one the
-  // public page serves, and nothing keeps the two in step automatically.
+  // Simra's own one-page export. Replace the file in `public/` whenever the
+  // resume changes - this copy is what the public page serves, and nothing
+  // keeps it in step with the original automatically.
   resumeUrl: '/simra-ali-resume.pdf',
 
   // The page, top to bottom, under the hero. Timeline first: the work is the

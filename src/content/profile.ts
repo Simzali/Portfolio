@@ -30,9 +30,11 @@ export const profile: Profile = {
 
   avatar: '/sim.jpg',
 
-  // Simra's own one-page export. Replace the file in `public/` whenever the
-  // resume changes - this copy is what the public page serves, and nothing
-  // keeps it in step with the original automatically.
+  // The two-page redesign, printed from
+  // `Simra/Resume/2026 Redesign/Simra Ali - Resume (2 page).html` with headless
+  // Chrome, which keeps its hyperlinks live inside the PDF. Regenerate from that
+  // HTML rather than editing the PDF - this copy is what the public page serves,
+  // and nothing keeps it in step with the source automatically.
   resumeUrl: '/simra-ali-resume.pdf',
 
   // The page, top to bottom, under the hero. Timeline first: the work is the

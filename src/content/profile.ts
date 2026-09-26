@@ -123,7 +123,7 @@ export const profile: Profile = {
     {
       id: 'stormgears-frc-5422',
       kind: 'work',
-      title: 'Co-Captain, Lead CAD & Mechanical Designer',
+      title: 'Co-Captain, CAD / Mechanical Design Lead',
       organization: 'FIRST Robotics Competition - Stormgears 5422',
       startDate: '2023-09',
       endDate: null,

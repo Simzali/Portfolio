@@ -48,9 +48,9 @@ export const profile: Profile = {
   // a claim that was never true. See docs/adr/ADR-013-hero-highlights.md.
   highlights: [
     {
-      value: '#1 in MA, #10 in the world',
+      value: '#1 in MA, #11 in the world',
       label: 'FTC 3565, of 7,800+ teams (2026)',
-      href: 'https://ftc-events.firstinspires.org/2024/USMASPQ/awards',
+      href: 'https://ftcstats.org/2026/index.html',
     },
     {
       value: 'FIRST Dean’s List Semi-Finalist',
@@ -150,7 +150,7 @@ export const profile: Profile = {
     {
       id: 'ghost-robotics-ftc-3565',
       kind: 'work',
-      title: 'Vision Software, Onshape CAD, Media Manager',
+      title: 'Vision Software, Onshape CAD',
       organization: 'FIRST Tech Challenge - Ghost Robotics 3565',
       startDate: '2023-09',
       endDate: null,
@@ -186,7 +186,7 @@ export const profile: Profile = {
         'Worked up to it through BWSI online coursework from February 2024: Basics of ASICs, Microelectronics & Hardware Development, Python Core, Version Control and UNIX, and Git/GitHub.',
       ],
       tags: ['Drones', 'Autonomous Systems', 'Computer Vision', 'Control Systems', 'Python'],
-      links: [{ label: 'BWSI', href: 'https://beaverworks.ll.mit.edu/CMS/bw/bwsi' }],
+      links: [{ label: 'BWSI', href: 'https://bwsi.mit.edu/' }],
     },
     {
       id: 'bae-women-in-technology',

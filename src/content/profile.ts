@@ -150,7 +150,7 @@ export const profile: Profile = {
     {
       id: 'ghost-robotics-ftc-3565',
       kind: 'work',
-      title: 'Vision Software, Onshape CAD',
+      title: 'Computer Vision Software Developer, Onshape CAD Designer',
       organization: 'FIRST Tech Challenge - Ghost Robotics 3565',
       startDate: '2023-09',
       endDate: null,

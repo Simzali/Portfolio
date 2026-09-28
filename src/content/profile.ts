@@ -25,7 +25,7 @@ export const profile: Profile = {
   // result, and the preview when someone pastes the URL. See metadata.ts.
   headline: 'Robotics and autonomous systems. Westford Academy ’27.',
   intro:
-    "I'm Simra, a high school engineer who likes figuring out how things work—and building things I don't completely know how to build yet. That curiosity has taken me from wiring robots to CAD, autonomous drones, drive-team coaching, and mentoring other students. I love learning by doing, solving problems with other people, and always finding something new to figure out.",
+    "I’m Simra, a high school engineer who loves figuring out how things work and learning to build something new. That curiosity has taken me from wiring robots to CAD, autonomous drones, drive-team coaching, and mentoring other students. I love learning by doing, solving problems with other people, and always finding something new to figure out.",
   location: 'Westford, Massachusetts',
 
   avatar: '/sim.jpg',
@@ -129,12 +129,12 @@ export const profile: Profile = {
       endDate: null,
       location: 'Westford, MA',
       summary:
-        'Co-captain of a 45-person team. I design the robot in SolidWorks, coach the drive team from the side of the field, and used to run electrical.',
+        'Co-captain of a 45-person team. I lead the design of the robot, coach the drive team, and was the former electrical lead.',
       highlights: [
         'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
-        "Taught myself SolidWorks after the team's experienced designer graduated, then helped lead a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.",
-        'Run technical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
-        'Competition Technician and Drive Coach - the two jobs where your mistakes happen in front of everyone.',
+        'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
+        'Run CAD and Electrical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
+        'Competition Drive Team Coach and Technician.',
       ],
       tags: [
         'SolidWorks',
@@ -156,10 +156,10 @@ export const profile: Profile = {
       endDate: null,
       location: 'Westford, MA',
       summary:
-        'A 10-person team, where titles do not help much. I work across Onshape CAD, computer vision, strategy, media, and outreach.',
+        'A 10-person team where I work across Onshape CAD, computer vision, strategy, media, and outreach.',
       highlights: [
-        '2026 Massachusetts State Champion and Winning Alliance Captain.',
         '2026 FIRST Championship, Ross Division Winner.',
+        '2026 Massachusetts State Champion and Winning Alliance Captain.',
         'Team earned the Control, Inspire, Innovate, and Connect Awards.',
       ],
       tags: ['Computer Vision', 'Onshape', 'CAD', 'Strategy', 'FTC'],

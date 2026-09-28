@@ -25,6 +25,7 @@ const fixture: Profile = {
   intro: 'Notes on a machine that does not exist yet.',
   avatar: '/avatar-placeholder.svg',
   sections: ['timeline'],
+  timelineLead: [],
   links: [],
   highlights: [],
   honors: [],

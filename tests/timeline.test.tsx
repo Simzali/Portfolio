@@ -287,4 +287,50 @@ describe('Timeline order', () => {
 
     expect(visibleEntryIds()).toEqual(['written-first', 'written-second']);
   });
+
+
+  /*
+   * `lead` is the escape hatch for what the dates cannot say. See ADR-016.
+   */
+  it('runs a named entry first, above entries the dates would rank higher', () => {
+    render(
+      <Timeline
+        entries={[ongoing('long-running', '2023-09'), finished('short-course', '2026-07', '2026-08')]}
+        lead={['short-course']}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['short-course', 'long-running']);
+  });
+
+  it('orders several named entries by the order they were named, not by date', () => {
+    render(
+      <Timeline
+        entries={[
+          ongoing('first-named', '2024-09'),
+          ongoing('second-named', '2023-09'),
+          ongoing('unnamed', '2022-09'),
+        ]}
+        lead={['first-named', 'second-named']}
+      />,
+    );
+
+    // Without `lead` the dates would give exactly the reverse.
+    expect(visibleEntryIds()).toEqual(['first-named', 'second-named', 'unnamed']);
+  });
+
+  it('leaves everything it does not name on the date rules', () => {
+    render(
+      <Timeline
+        entries={[
+          finished('older', '2020-01', '2021-01'),
+          ongoing('going', '2024-01'),
+          finished('newer', '2023-01', '2024-01'),
+        ]}
+        lead={['newer']}
+      />,
+    );
+
+    expect(visibleEntryIds()).toEqual(['newer', 'going', 'older']);
+  });
 });

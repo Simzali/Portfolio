@@ -203,7 +203,43 @@ export const profileSchema = z.object({
         'sections must not repeat - each id is a DOM id and an anchor target, and duplicates break both',
     })
     .default([...SECTION_IDS]),
-});
+
+  /**
+   * Timeline entry ids that lead the timeline, in this order. Everything not
+   * named here follows underneath on the date rules, unchanged.
+   *
+   * Empty is the normal case and means the dates decide everything. Reach for
+   * this only when the dates cannot say what you mean - the list is read by a
+   * human as a claim about what matters most, so a long one says nothing.
+   * See ADR-016.
+   */
+  timelineLead: z.array(z.string()).default([]),
+})
+  /**
+   * A lead id that matches no entry would fail silently - the entry would
+   * just stay where the dates put it, which looks exactly like the feature
+   * not working. Renaming an entry id has to break loudly instead.
+   */
+  .superRefine((profile, ctx) => {
+    const ids = new Set(profile.timeline.map((entry) => entry.id));
+
+    profile.timelineLead.forEach((id, index) => {
+      if (ids.has(id)) return;
+      ctx.addIssue({
+        code: 'custom',
+        path: ['timelineLead', index],
+        message: `timelineLead names "${id}", which is not the id of any timeline entry`,
+      });
+    });
+
+    if (new Set(profile.timelineLead).size !== profile.timelineLead.length) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['timelineLead'],
+        message: 'timelineLead must not repeat - an entry cannot lead twice',
+      });
+    }
+  });
 
 export type Link = z.infer<typeof linkSchema>;
 export type Image = z.infer<typeof imageSchema>;

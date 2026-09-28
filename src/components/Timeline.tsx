@@ -21,10 +21,24 @@ import { TimelineFilter } from './TimelineFilter';
  * is stable, so entries that start and end together stay in the order they were
  * written, which is the only place the author gets to express a preference.
  *
+ * Ahead of all of that sits `lead`: ids the author named to run first, in
+ * that order. The dates cannot express "this one matters most" - a thing that
+ * finished last month is still finished - so when that is what is meant, it
+ * has to be said outright. See ADR-016.
+ *
  * See docs/adr/ADR-012-timeline-order.md.
  */
-function sortTimeline(entries: Entry[]): Entry[] {
+function sortTimeline(entries: Entry[], lead: string[]): Entry[] {
+  const leadRank = new Map(lead.map((id, index) => [id, index]));
+
   return [...entries].sort((a, b) => {
+    // A named entry leads, in the order it was named.
+    const rankA = leadRank.get(a.id);
+    const rankB = leadRank.get(b.id);
+    if (rankA !== undefined && rankB !== undefined) return rankA - rankB;
+    if (rankA !== undefined) return -1;
+    if (rankB !== undefined) return 1;
+
     // Still going beats finished, whatever the dates say.
     if (a.endDate === null && b.endDate !== null) return -1;
     if (b.endDate === null && a.endDate !== null) return 1;
@@ -43,12 +57,14 @@ function sortTimeline(entries: Entry[]): Entry[] {
 
 type TimelineProps = {
   entries: Entry[];
+  /** Entry ids to run first, in this order. See ADR-016. */
+  lead?: string[];
 };
 
-export function Timeline({ entries }: TimelineProps) {
+export function Timeline({ entries, lead = [] }: TimelineProps) {
   const [filter, setFilter] = useState<TimelineFilterValue>('all');
 
-  const sorted = useMemo(() => sortTimeline(entries), [entries]);
+  const sorted = useMemo(() => sortTimeline(entries, lead), [entries, lead]);
   const visible = useMemo(
     () => (filter === 'all' ? sorted : sorted.filter((entry) => entry.kind === filter)),
     [sorted, filter],

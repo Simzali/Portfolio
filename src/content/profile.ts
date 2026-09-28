@@ -317,6 +317,10 @@ export const profile: Profile = {
         'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
       images: [
         {
+          src: '/outreach-frc-demo.jpg',
+          alt: 'Families and children crowded around the Stormgears 5422 robot and a FIRST LEGO League table at a team demonstration, beneath the FIRST banners on the wall',
+        },
+        {
           src: '/outreach-discovery-museum.jpg',
           alt: 'A child driving the Stormgears 5422 robot by handheld controller at a Discovery Museum outreach session, with the team banner and game pieces set up behind',
         },
@@ -414,7 +418,13 @@ export const profile: Profile = {
       endDate: '2025-08',
       summary:
         'A browser game you steer with your hands - no keyboard, no mouse. The webcam reads hand gestures and those become the controls.',
-      images: [],
+      images: [
+        {
+          src: '/firefly-gwc-certificate.jpg',
+          // Rendered from the source PDF, then cropped above the signature.
+          alt: 'Girls Who Code certificate of completion, presented to Simra Ali, for the Intro to p5.js and Game Design course',
+        },
+      ],
       highlights: [
         'Built with the p5play and p5.js libraries; hand-gesture input via TensorFlow.js.',
       ],

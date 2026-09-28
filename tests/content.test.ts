@@ -45,6 +45,36 @@ describe('profile content', () => {
     expect(result.success).toBe(false);
   });
 
+  /*
+   * `timelineLead` names entries by id. A typo or a renamed entry would
+   * otherwise do nothing at all - the entry would sit where the dates put it,
+   * which is indistinguishable from the feature being broken. See ADR-016.
+   */
+  it('rejects a lead id that matches no timeline entry', () => {
+    const result = profileSchema.safeParse({
+      ...profile,
+      timelineLead: ['no-such-entry'],
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.message).toContain('no-such-entry');
+  });
+
+  it('rejects an entry named twice in the lead', () => {
+    const id = profile.timeline[0].id;
+    const result = profileSchema.safeParse({ ...profile, timelineLead: [id, id] });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('names only entries that exist', () => {
+    const ids = profile.timeline.map((entry) => entry.id);
+
+    for (const id of profile.timelineLead) {
+      expect(ids, `profile.timelineLead names "${id}", which is not an entry`).toContain(id);
+    }
+  });
+
   it('names only sections that exist', () => {
     for (const id of profile.sections) {
       expect(SECTION_IDS, `profile.sections names "${id}", which is not a section`).toContain(id);

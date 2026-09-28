@@ -13,7 +13,11 @@
  * Never invent content. If something is not in your resume, leave the field
  * out. This is a public page about you.
  *
- * Ordering does not matter. `Timeline` sorts by date, most recent first.
+ * Array order here mostly does not matter: `Timeline` sorts itself - still
+ * going first, then most recently finished, longest-running breaking ties
+ * (ADR-012). The exceptions are `timelineLead` below, which names the entries
+ * that run ahead of all of that (ADR-016), and entries whose dates tie exactly,
+ * which keep the order they are written in.
  *
  * Every date on this page is confirmed. Nothing here is a placeholder.
  */
@@ -42,6 +46,20 @@ export const profile: Profile = {
   // someone wants *after* they are convinced.
   // See docs/adr/ADR-006-section-order.md.
   sections: ['timeline', 'honors', 'links'],
+
+  // Entries that lead the timeline, ahead of the date rules: the two robotics
+  // teams, then the three selective programmes. All three programmes are
+  // finished, so the date rules file them below every ongoing entry - correct
+  // in general, wrong for MIT, BAE and Harvard. FRC and FTC are named only to
+  // hold their positions above them.
+  // See docs/adr/ADR-016-timeline-lead.md.
+  timelineLead: [
+    'stormgears-frc-5422',
+    'ghost-robotics-ftc-3565',
+    'bwsi-autonomous-air-vehicle-racing',
+    'bae-women-in-technology',
+    'harvard-summer-robotics-ai',
+  ],
 
   // The four facts a visitor gets if they read nothing else. Every href below
   // was fetched and confirmed live on 2026-09-08 - a dead source link reads as
@@ -282,7 +300,12 @@ export const profile: Profile = {
       endDate: null,
       summary:
         'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
-      images: [],
+      images: [
+        {
+          src: '/outreach-discovery-museum.jpg',
+          alt: 'A child driving the Stormgears 5422 robot by handheld controller at a Discovery Museum outreach session, with the team banner and game pieces set up behind',
+        },
+      ],
       highlights: [
         'Lead and support Girl Scout STEM Fest, FIRST LEGO League trainings and scrimmages, the Apple Blossom Parade, and school and community demonstrations.',
         'Focus on mentoring girls into technical roles and, the harder half, keeping them there.',

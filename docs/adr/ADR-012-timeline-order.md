@@ -93,3 +93,11 @@ which is what step 3 arranges.
 - **We will need to revisit this when:** two ongoing entries tie and the author
   wants a specific one first often enough that reordering the array stops
   feeling like a trick.
+
+## Amendment, 2026-09-28
+
+Revisited, and in a stronger form than the line above anticipated: the author
+wanted three *finished* entries placed above ongoing ones, which no date rule
+here can do. The comparator described here is unchanged and still decides the order of
+everything the author does not name. What sits ahead of it is
+`profile.timelineLead`. See [ADR-016](ADR-016-timeline-lead.md).

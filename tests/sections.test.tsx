@@ -20,6 +20,7 @@ function profileWith(sections: SectionId[], overrides: Partial<Profile> = {}): P
     intro: 'Notes on a machine that does not exist yet.',
     avatar: '/avatar-placeholder.svg',
     sections,
+    timelineLead: [],
     links: [{ label: 'Email', href: 'mailto:ada@example.com' }],
     honors: [{ id: 'note-g', title: 'Note G' }],
     highlights: [],

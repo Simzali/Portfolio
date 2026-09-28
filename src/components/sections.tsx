@@ -43,7 +43,7 @@ export const SECTIONS: Record<SectionId, SectionDefinition> = {
     // `timeline` has a `.min(1)` in the schema, so this cannot happen - but the
     // registry is a total record and answering honestly costs nothing.
     isEmpty: (profile) => profile.timeline.length === 0,
-    render: (profile) => <Timeline entries={profile.timeline} />,
+    render: (profile) => <Timeline entries={profile.timeline} lead={profile.timelineLead} />,
   },
   honors: {
     label: 'Honors',

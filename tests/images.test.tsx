@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Timeline } from '../src/components/Timeline';
 import { timelineEntrySchema, type TimelineEntry } from '../src/content/schema';
 
@@ -98,6 +98,31 @@ describe('the image dialog', () => {
     const { container } = render(<Timeline entries={[threeImages()]} />);
 
     expect(container.querySelector('dialog')!.getAttribute('aria-label')).toBe('The Bat images');
+  });
+
+  it('fetches the whole gallery on open, so no image is still loading when stepped to', async () => {
+    const user = userEvent.setup();
+    render(<Timeline entries={[threeImages()]} />);
+
+    // A browser keeps painting the image it already has until the next one
+    // decodes, while the caption - React state - changes at once. Fetching
+    // on open is what stops a reader seeing one photo under another's
+    // description. See docs/adr/ADR-015-entry-images.md.
+    const created: HTMLImageElement[] = [];
+    const real = document.createElement.bind(document);
+    const spy = vi
+      .spyOn(document, 'createElement')
+      .mockImplementation(((tag: string, options?: ElementCreationOptions) => {
+        const element = real(tag, options);
+        if (element instanceof HTMLImageElement) created.push(element);
+        return element;
+      }) as typeof document.createElement);
+
+    await user.click(screen.getByRole('button', { name: /view 3 images/ }));
+    spy.mockRestore();
+
+    const requested = new Set(created.map((el) => el.getAttribute('src')).filter(Boolean));
+    expect(requested).toEqual(new Set(['/photo-1.jpg', '/photo-2.jpg', '/photo-3.jpg']));
   });
 });
 

@@ -61,6 +61,32 @@ So the element owns whether it is open, and `showModal()` is called directly
 from the click handler. React state tracks only which image is showing. There
 is one source of truth, no synchronisation, and no way for the two to drift.
 
+## The gallery is fetched when the dialog opens
+
+Only the cover is fetched with the page. The first version left the rest to
+the browser, which meant stepping to an image started its download at that
+moment - and a browser keeps painting the image it already has until the new
+one decodes. The caption is React state and changes immediately. So for as
+long as the fetch took, the reader saw the previous photo captioned as the
+next one.
+
+Found by stepping through the FTC gallery in a real browser: image 3 was
+on screen as image 2 for long enough to screenshot, with `src` already set
+to the right file and `naturalWidth` already correct. Nothing in the DOM was
+wrong; the pixels were just stale. A test in jsdom could not have caught it,
+because jsdom never decodes an image at all.
+
+Opening the dialog now requests every image in the gallery. That is the
+moment the reader commits to looking, and it buys the seconds it takes them
+to read the first caption. It costs a fetch for images they might not reach,
+bounded by the cap of six.
+
+Keying the `<img>` by `src` would also fix it - React would replace the
+element rather than reuse it, so nothing stale could be painted. It trades a
+wrong picture for an empty box that collapses the dialog height mid-read.
+Showing the reader nothing is more honest than showing them the wrong thing,
+but fetching early means neither.
+
 ## Options we rejected
 
 ### Option: a thumbnail strip in the cover slot
@@ -110,9 +136,9 @@ image at once.
   and it has to keep working at 320px where the dialog is nearly the viewport.
 - **Bad:** `alt` is required per image, so adding six images means writing six
   descriptions. That is the correct cost and it is still a cost.
-- **Bad:** Nothing lazy-loads the images behind the dialog beyond the browser's
-  own `loading="lazy"`, so an entry with six large photos downloads them when
-  the dialog opens rather than on page load - acceptable, but it means image
-  weight is now something to watch when adding them.
+- **Bad:** Opening the dialog downloads the whole gallery, so an entry with
+  six large photos spends that bandwidth the moment the cover is clicked.
+  Acceptable - it is a deliberate act by the reader, and the cap is six - but
+  it means image weight is now something to watch when adding them.
 - **We will need to revisit this when:** an entry wants video, or when a reader
   on a phone wants to swipe rather than tap arrows.

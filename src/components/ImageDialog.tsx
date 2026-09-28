@@ -39,6 +39,17 @@ export function ImageDialog({ images, label, ref }: ImageDialogProps) {
     open(at: number) {
       setIndex(at);
       if (!dialogRef.current?.open) dialogRef.current?.showModal();
+
+      // Warm the rest of the gallery. Only the cover is fetched with the
+      // page, so stepping used to fetch the next image right then - and a
+      // browser keeps painting the image it already has until the new one
+      // decodes. The caption is React state and changes immediately, so for
+      // a few hundred milliseconds the reader sees the previous photo
+      // captioned as the next one. Opening the dialog is the reader
+      // committing to look, which is exactly when the fetch should start.
+      for (const image of images) {
+        document.createElement('img').src = image.src;
+      }
     },
   }));
 

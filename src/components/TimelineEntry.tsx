@@ -50,7 +50,20 @@ export function TimelineEntry({ entry }: TimelineEntryProps) {
       <h3 className="text-ink-950 mt-1.5 text-lg leading-snug font-semibold text-pretty sm:text-xl">
         {entry.title}
         {entry.organization ? (
-          <span className="text-ink-600 font-normal"> &middot; {entry.organization}</span>
+          <>
+            {/*
+              The space is deliberately outside the span, and the span is an
+              inline-block: together they give the browser a break opportunity
+              before the organization and none inside it, so a heading that
+              wraps puts the whole organization on the next line rather than
+              splitting it mid-phrase. Not `nowrap` - a long organization must
+              still break rather than push the page past 320px.
+              See docs/adr/ADR-014-organization-wraps-whole.md.
+            */}{' '}
+            <span className="text-ink-600 inline-block font-normal">
+              &middot; {entry.organization}
+            </span>
+          </>
         ) : null}
       </h3>
 

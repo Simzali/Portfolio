@@ -123,7 +123,7 @@ export const profile: Profile = {
     {
       id: 'stormgears-frc-5422',
       kind: 'work',
-      title: 'Co-Captain, CAD / Mechanical Design Lead',
+      title: 'Co-Captain, CAD / Mechanical Design Lead, Former Electrical Lead',
       organization: 'FIRST Robotics Competition - Stormgears 5422',
       startDate: '2023-09',
       endDate: null,
@@ -134,7 +134,7 @@ export const profile: Profile = {
         'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
         'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
         'Run CAD and Electrical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
-        'Competition Drive Team Coach and Technician.',
+        'Competition Drive Team Coach (2026) and Technician (2025).',
       ],
       tags: [
         'SolidWorks',

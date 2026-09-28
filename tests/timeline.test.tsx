@@ -155,6 +155,58 @@ describe('Timeline filter', () => {
  * has been running longest leads, because "when did you start" is not a recency
  * signal when every one of them is equally current.
  */
+/**
+ * The heading is role + separator + organization on one line. When it wraps,
+ * the organization has to move whole rather than splitting mid-phrase - see
+ * docs/adr/ADR-014-organization-wraps-whole.md.
+ *
+ * jsdom computes no layout and resolves no Tailwind, so the wrap itself is not
+ * testable here. What is testable is the structure that makes it possible: the
+ * separating space sits OUTSIDE the organization span, which is what gives the
+ * browser a break opportunity before the organization and none inside it. Put
+ * the space back inside and the inline-block carries its own leading
+ * whitespace, indenting the organization every time it wraps.
+ */
+describe('entry heading structure', () => {
+  const withOrg: TimelineEntry = {
+    id: 'long-one',
+    kind: 'work',
+    title: 'Computer Vision Software Developer, Onshape CAD Designer',
+    organization: 'FIRST Tech Challenge - Ghost Robotics 3565',
+    startDate: '2023-09',
+    endDate: null,
+    summary: 'A team.',
+    highlights: [],
+    tags: [],
+    links: [],
+  };
+
+  it('keeps the organization in a single element, separator included', () => {
+    render(<Timeline entries={[withOrg]} />);
+    const org = screen.getByText(/FIRST Tech Challenge/);
+
+    expect(org.tagName).toBe('SPAN');
+    expect(org.textContent).toContain('Ghost Robotics 3565');
+  });
+
+  it('puts the separating space outside the organization span', () => {
+    render(<Timeline entries={[withOrg]} />);
+    const org = screen.getByText(/FIRST Tech Challenge/);
+
+    // Leading whitespace inside an inline-block is rendered, so it must not be
+    // there: the span starts at the separator.
+    expect(org.textContent!.startsWith(' ')).toBe(false);
+    expect(org.textContent!.trimStart()).toBe(org.textContent);
+  });
+
+  it('still renders a heading for an entry with no organization', () => {
+    const noOrg = { ...withOrg, id: 'no-org' };
+    delete noOrg.organization;
+    render(<Timeline entries={[noOrg]} />);
+
+    expect(screen.getByRole('heading', { level: 3 }).textContent).toBe(withOrg.title);
+  });
+});
 describe('Timeline order', () => {
   const ongoing = (id: string, startDate: string): TimelineEntry => ({
     id,

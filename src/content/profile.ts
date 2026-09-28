@@ -282,7 +282,12 @@ export const profile: Profile = {
       endDate: null,
       summary:
         'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
-      images: [],
+      images: [
+        {
+          src: '/outreach-discovery-museum.jpg',
+          alt: 'A child driving the Stormgears 5422 robot by handheld controller at a Discovery Museum outreach session, with the team banner and game pieces set up behind',
+        },
+      ],
       highlights: [
         'Lead and support Girl Scout STEM Fest, FIRST LEGO League trainings and scrimmages, the Apple Blossom Parade, and school and community demonstrations.',
         'Focus on mentoring girls into technical roles and, the harder half, keeping them there.',

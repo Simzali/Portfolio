@@ -28,7 +28,7 @@ export const profile: Profile = {
     "I’m Simra, a high school engineer who loves figuring out how things work and learning to build something new. That curiosity has taken me from wiring robots to CAD, autonomous drones, drive-team coaching, and mentoring other students. I love learning by doing, solving problems with other people, and always finding something new to figure out.",
   location: 'Westford, Massachusetts',
 
-  avatar: '/sim.jpg',
+  avatar: '/simra-profile.jpg',
 
   // The two-page redesign, printed from
   // `Simra/Resume/2026 Redesign/Simra Ali - Resume (2 page).html` with headless

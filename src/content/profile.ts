@@ -169,7 +169,20 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A 10-person team where I work across Onshape CAD, computer vision, strategy, media, and outreach.',
-      images: [],
+      images: [
+        {
+          src: '/ftc-robot.jpg',
+          alt: "Team 3565's competition robot, close up, showing the intake rollers, drivetrain and wiring, with green and purple game pieces",
+        },
+        {
+          src: '/ftc-worlds.jpg',
+          alt: 'The team at the FIRST Tech Challenge World Championship, holding the Ross Division winner banner',
+        },
+        {
+          src: '/ftc-banners.jpg',
+          alt: "The team with the season's trophies, under the Ross Division and Massachusetts State Championship winner banners",
+        },
+      ],
       highlights: [
         '2026 FIRST Championship, Ross Division Winner.',
         '2026 Massachusetts State Champion and Winning Alliance Captain.',

@@ -43,31 +43,36 @@ export function EntryCover({ entry }: EntryCoverProps) {
       />
     );
 
+    // Openable whatever the count. A project poster or a CAD screenshot is
+    // unreadable at 224px, and "only galleries open" left exactly those
+    // entries as a dead end - the thing most worth enlarging was the thing
+    // with nothing to click. The badge still only appears when there is more
+    // than one. See ADR-015.
+    const count = entry.images.length;
+
     return (
       <figure className="sm:order-last sm:w-56 sm:shrink-0">
-        {rest.length > 0 ? (
-          <>
-            <button
-              type="button"
-              onClick={() => dialog.current?.open(0)}
-              aria-label={`${subject}: view ${entry.images.length} images`}
-              className="group relative block w-full cursor-pointer"
-            >
-              {picture}
-              <span className="bg-ink-50/90 border-ink-200 text-ink-800 group-hover:border-brand-500 group-hover:text-brand-700 absolute right-1.5 bottom-1.5 rounded-md border px-1.5 py-0.5 text-[0.6875rem] font-semibold transition-colors">
-                +{rest.length}
-              </span>
-            </button>
+        <button
+          type="button"
+          onClick={() => dialog.current?.open(0)}
+          aria-label={
+            count === 1 ? `${subject}: open the image` : `${subject}: view ${count} images`
+          }
+          className="group relative block w-full cursor-pointer"
+        >
+          {picture}
+          {rest.length > 0 ? (
+            <span className="bg-ink-50/90 border-ink-200 text-ink-800 group-hover:border-brand-500 group-hover:text-brand-700 absolute right-1.5 bottom-1.5 rounded-md border px-1.5 py-0.5 text-[0.6875rem] font-semibold transition-colors">
+              +{rest.length}
+            </span>
+          ) : null}
+        </button>
 
-            <ImageDialog
-              ref={dialog}
-              images={entry.images}
-              label={`${subject} images`}
-            />
-          </>
-        ) : (
-          picture
-        )}
+        <ImageDialog
+          ref={dialog}
+          images={entry.images}
+          label={count === 1 ? `${subject} image` : `${subject} images`}
+        />
 
         {cover.credit ? (
           <figcaption className="text-ink-400 mt-1.5 text-[0.6875rem] leading-snug">

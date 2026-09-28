@@ -223,7 +223,16 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'Four weeks in person at MIT designing, programming, repairing, testing, and racing autonomous drones.',
-      images: [],
+      images: [
+        {
+          src: '/bwsi-drone-gate.jpg',
+          alt: 'The quadcopter flying through a race gate ringed with AprilTag markers, inside the netted arena',
+        },
+        {
+          src: '/bwsi-drone-held.jpg',
+          alt: 'Holding the racing quadcopter: red frame, 3D-printed canopy and landing legs, and a camera bar across the nose',
+        },
+      ],
       highlights: [
         'Studied computer vision, state estimation, control systems, navigation, and flight dynamics, then had to make all of it hold together on a drone moving at speed.',
         'Explored socially aware path planning for autonomous drones, and connected with an MIT PhD researcher working in the field.',
@@ -325,7 +334,12 @@ export const profile: Profile = {
       endDate: '2025-08',
       location: 'Cambridge, MA',
       summary: 'A college course on how autonomous systems perceive, plan, and move. Final grade: A.',
-      images: [],
+      images: [
+        {
+          src: '/harvard-floodwatch.jpg',
+          alt: 'The FloodWatch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
+        },
+      ],
       highlights: [
         'Sensors, motion planning, SLAM, reinforcement learning, autonomous systems, and computer vision.',
         'Co-led "Solve It, Defend It!" and developed Flood Watch, a concept for tracking floods using drone and autonomous-vehicle data.',

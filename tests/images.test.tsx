@@ -25,11 +25,34 @@ const entry = (images: TimelineEntry['images']): TimelineEntry => ({
 const img = (n: number) => ({ src: `/photo-${n}.jpg`, alt: `Photo ${n}` });
 
 describe('entry images', () => {
-  it('shows a single image with no button and no badge', () => {
+  /*
+   * A single image opens too. The first version reserved the dialog for
+   * galleries, which left a project poster - unreadable at 224px and the thing
+   * most worth enlarging - as the one image with nothing to click. The badge
+   * is what depends on the count, not the dialog. See ADR-015.
+   */
+  it('opens a single image, and shows no badge for it', async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Timeline entries={[entry([img(1)])]} />);
+
+    // Scoped to the cover: the dialog now mounts alongside it and holds the
+    // same image, so an unscoped alt-text query matches twice.
+    const opener = screen.getByRole('button', { name: 'The Bat: open the image' });
+    expect(within(opener).getByAltText('Photo 1')).toBeInTheDocument();
+    expect(within(opener).queryByText((text) => text.startsWith('+'))).not.toBeInTheDocument();
+
+    await user.click(opener);
+    expect(container.querySelector('dialog')!.open).toBe(true);
+  });
+
+  it('gives a lone image no previous or next control', async () => {
+    const user = userEvent.setup();
     render(<Timeline entries={[entry([img(1)])]} />);
 
-    expect(screen.getByAltText('Photo 1')).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /view .* images/ })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /open the image/ }));
+
+    expect(screen.queryByRole('button', { name: 'Next image' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Previous image' })).not.toBeInTheDocument();
   });
 
   it('draws the generated cover when there are no images', () => {

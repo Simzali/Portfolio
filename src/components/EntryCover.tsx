@@ -1,7 +1,8 @@
-import { createElement } from 'react';
+import { createElement, useRef } from 'react';
 import { Briefcase, FolderGit2 } from 'lucide-react';
 import type { TimelineEntry } from '../content/schema';
 import { hueFor, iconForEntry } from './icon-map';
+import { ImageDialog, type ImageDialogHandle } from './ImageDialog';
 
 type EntryCoverProps = {
   entry: TimelineEntry;
@@ -10,28 +11,62 @@ type EntryCoverProps = {
 /**
  * The visual for an entry.
  *
- * If you gave it an image, that wins - a screenshot of the thing you built
- * beats anything generated. Otherwise we draw a cover from the entry itself:
- * a stable hue from its id, and an icon picked from its tags, so a project
- * about maps gets a map. Nobody has to choose a colour, and no two entries
- * look the same.
+ * The first image wins - a photo of the thing you built beats anything
+ * generated. Any further images sit behind a dialog opened from the cover, so
+ * a project can show both the built object and its CAD without either being
+ * shrunk to a thumbnail. See docs/adr/ADR-015-entry-images.md.
+ *
+ * With no images we draw a cover from the entry itself: a stable hue from its
+ * id, and an icon picked from its tags, so a project about maps gets a map.
+ * Nobody has to choose a colour, and no two entries look the same.
  */
 export function EntryCover({ entry }: EntryCoverProps) {
-  if (entry.image) {
+  const dialog = useRef<ImageDialogHandle>(null);
+
+  const [cover, ...rest] = entry.images;
+
+  if (cover) {
+    const picture = (
+      <img
+        src={cover.src}
+        alt={cover.alt}
+        width={960}
+        height={640}
+        loading="lazy"
+        decoding="async"
+        className="border-ink-200 aspect-[3/2] w-full rounded-xl border object-cover"
+      />
+    );
+
     return (
       <figure className="sm:order-last sm:w-56 sm:shrink-0">
-        <img
-          src={entry.image.src}
-          alt={entry.image.alt}
-          width={960}
-          height={640}
-          loading="lazy"
-          decoding="async"
-          className="border-ink-200 aspect-[3/2] w-full rounded-xl border object-cover"
-        />
-        {entry.image.credit ? (
+        {rest.length > 0 ? (
+          <>
+            <button
+              type="button"
+              onClick={() => dialog.current?.open(0)}
+              aria-label={`${entry.title}: view ${entry.images.length} images`}
+              className="group relative block w-full cursor-pointer"
+            >
+              {picture}
+              <span className="bg-ink-50/90 border-ink-200 text-ink-800 group-hover:border-brand-500 group-hover:text-brand-700 absolute right-1.5 bottom-1.5 rounded-md border px-1.5 py-0.5 text-[0.6875rem] font-semibold transition-colors">
+                +{rest.length}
+              </span>
+            </button>
+
+            <ImageDialog
+              ref={dialog}
+              images={entry.images}
+              label={`${entry.title} images`}
+            />
+          </>
+        ) : (
+          picture
+        )}
+
+        {cover.credit ? (
           <figcaption className="text-ink-400 mt-1.5 text-[0.6875rem] leading-snug">
-            {entry.image.credit}
+            {cover.credit}
           </figcaption>
         ) : null}
       </figure>

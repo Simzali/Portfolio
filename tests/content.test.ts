@@ -58,23 +58,25 @@ describe('profile content', () => {
 
   it('gives every image real alt text', () => {
     for (const entry of profile.timeline) {
-      if (!entry.image) continue;
-      expect(entry.image.alt.trim().length, `${entry.id} has an image with empty alt text`).
-        toBeGreaterThan(0);
-      expect(
-        entry.image.src.startsWith('/'),
-        `${entry.id} image src should be a root-relative path, got "${entry.image.src}"`,
-      ).toBe(true);
+      for (const image of entry.images) {
+        expect(image.alt.trim().length, `${entry.id} has an image with empty alt text`).
+          toBeGreaterThan(0);
+        expect(
+          image.src.startsWith('/'),
+          `${entry.id} image src should be a root-relative path, got "${image.src}"`,
+        ).toBe(true);
+      }
     }
   });
 
   it('points every image at a file that actually exists', () => {
     for (const entry of profile.timeline) {
-      if (!entry.image) continue;
-      const onDisk = join(process.cwd(), 'public', entry.image.src);
-      expect(existsSync(onDisk), `${entry.id} points at ${entry.image.src}, which is not in public/`).toBe(
-        true,
-      );
+      for (const image of entry.images) {
+        const onDisk = join(process.cwd(), 'public', image.src);
+        expect(existsSync(onDisk), `${entry.id} points at ${image.src}, which is not in public/`).toBe(
+          true,
+        );
+      }
     }
   });
 

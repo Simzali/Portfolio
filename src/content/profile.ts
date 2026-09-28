@@ -255,7 +255,13 @@ export const profile: Profile = {
       location: 'New Hampshire',
       summary:
         'A semester inside an engineering company, rotating through the disciplines you never see from a classroom.',
-      images: [],
+      images: [
+        {
+          src: '/bae-wit-certificate.jpg',
+          // Cropped above the signature block, as with the NETSCOUT one.
+          alt: 'Certificate for completing the Electronic Systems Women in Technology program at BAE Systems, presented to Simra Ali, May 12 2026',
+        },
+      ],
       highlights: [
         'Hands-on labs, workshops, tours, and presentations across electrical, microwave/RF, software, mechanical, signal processing, optical, manufacturing, and failure-analysis engineering.',
         'The failure-analysis lab was the one that stuck: an entire discipline built around asking why something broke.',
@@ -429,7 +435,12 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
-      images: [],
+      images: [
+        {
+          src: '/the-bat-girlhacks-award.jpg',
+          alt: 'The first-place team holding their trophies after the GirlHacks award presentation at Microsoft',
+        },
+      ],
       highlights: [
         'First place at Microsoft NERD GirlHacks.',
         'Ultrasonic ranging turned into feedback a person can act on, built and demoed inside a hackathon.',

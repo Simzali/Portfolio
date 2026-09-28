@@ -36,6 +36,7 @@ const fixture: Profile = {
       startDate: '1843-01',
       endDate: null,
       summary: 'Note G.',
+      images: [],
       highlights: [],
       tags: [],
       links: [],

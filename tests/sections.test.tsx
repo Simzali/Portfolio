@@ -31,6 +31,7 @@ function profileWith(sections: SectionId[], overrides: Partial<Profile> = {}): P
         startDate: '1843-01',
         endDate: null,
         summary: 'Note G, and the first algorithm written for a machine.',
+        images: [],
         highlights: [],
         tags: [],
         links: [],

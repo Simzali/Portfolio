@@ -94,8 +94,14 @@ export const timelineEntrySchema = z.object({
   location: z.string().optional(),
   /** One or two sentences. */
   summary: z.string().min(1),
-  /** A screenshot, photo or cover image. Optional - plenty of entries need none. */
-  image: imageSchema.optional(),
+  /**
+   * Screenshots and photos. The first is the cover and renders beside the
+   * prose; any others open in a dialog from it. Empty for most entries - a
+   * programme or a club needs no picture, and the generated cover fills the
+   * slot. Capped at six because a reader clicking through more than that has
+   * stopped reading. See docs/adr/ADR-015-entry-images.md.
+   */
+  images: z.array(imageSchema).max(6).default([]),
   highlights: z.array(z.string()).default([]),
   /** "React", "Python" */
   tags: z.array(z.string()).default([]),

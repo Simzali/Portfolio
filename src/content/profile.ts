@@ -28,7 +28,7 @@ export const profile: Profile = {
     "I’m Simra, a high school engineer who loves figuring out how things work and learning to build something new. That curiosity has taken me from wiring robots to CAD, autonomous drones, drive-team coaching, and mentoring other students. I love learning by doing, solving problems with other people, and always finding something new to figure out.",
   location: 'Westford, Massachusetts',
 
-  avatar: '/sim.jpg',
+  avatar: '/simra-profile.jpg',
 
   // The two-page redesign, printed from
   // `Simra/Resume/2026 Redesign/Simra Ali - Resume (2 page).html` with headless
@@ -123,18 +123,30 @@ export const profile: Profile = {
     {
       id: 'stormgears-frc-5422',
       kind: 'work',
-      title: 'Co-Captain, CAD / Mechanical Design Lead',
+      title: 'Co-Captain, CAD / Mechanical Design Lead, Former Electrical Lead',
       organization: 'FIRST Robotics Competition - Stormgears 5422',
       startDate: '2023-09',
       endDate: null,
       location: 'Westford, MA',
       summary:
         'Co-captain of a 45-person team. I lead the design of the robot, coach the drive team, and was the former electrical lead.',
+      images: [
+        {
+          src: '/frc-robot-field.jpg',
+          alt: 'Stormgears 5422 robot on the competition field, surrounded by yellow game pieces',
+        },
+        { src: '/frc-robot-cad.jpg', alt: 'CAD side view of the full robot assembly' },
+        {
+          src: '/frc-robot-cad-detail.jpg',
+          alt: 'CAD detail of the robot internals: belts, pulleys, motors and intake rollers',
+        },
+      ],
       highlights: [
         'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
         'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
+        'Ranked alliance captain at both 2026 district qualifiers and advanced to the New England District Championship.',
         'Run CAD and Electrical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
-        'Competition Drive Team Coach and Technician.',
+        'Competition Drive Team Coach (2026) and Technician (2025).',
       ],
       tags: [
         'SolidWorks',
@@ -157,6 +169,20 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A 10-person team where I work across Onshape CAD, computer vision, strategy, media, and outreach.',
+      images: [
+        {
+          src: '/ftc-robot.jpg',
+          alt: "Team 3565's competition robot, close up, showing the intake rollers, drivetrain and wiring, with green and purple game pieces",
+        },
+        {
+          src: '/ftc-worlds.jpg',
+          alt: 'The team at the FIRST Tech Challenge World Championship, holding the Ross Division winner banner',
+        },
+        {
+          src: '/ftc-banners.jpg',
+          alt: "The team with the season's trophies, under the Ross Division and Massachusetts State Championship winner banners",
+        },
+      ],
       highlights: [
         '2026 FIRST Championship, Ross Division Winner.',
         '2026 Massachusetts State Champion and Winning Alliance Captain.',
@@ -179,6 +205,7 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'Four weeks in person at MIT designing, programming, repairing, testing, and racing autonomous drones.',
+      images: [],
       highlights: [
         'Studied computer vision, state estimation, control systems, navigation, and flight dynamics, then had to make all of it hold together on a drone moving at speed.',
         'Explored socially aware path planning for autonomous drones, and connected with an MIT PhD researcher working in the field.',
@@ -201,6 +228,7 @@ export const profile: Profile = {
       location: 'New Hampshire',
       summary:
         'A semester inside an engineering company, rotating through the disciplines you never see from a classroom.',
+      images: [],
       highlights: [
         'Hands-on labs, workshops, tours, and presentations across electrical, microwave/RF, software, mechanical, signal processing, optical, manufacturing, and failure-analysis engineering.',
         'The failure-analysis lab was the one that stuck: an entire discipline built around asking why something broke.',
@@ -221,6 +249,7 @@ export const profile: Profile = {
       startDate: '2024-09',
       endDate: null,
       summary: 'I coordinate club operations and still work the shows.',
+      images: [],
       highlights: [
         'Anchor and production crew: teleprompter, sound board, video switching, scripts, and school-wide broadcasts.',
       ],
@@ -237,6 +266,7 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A club I co-founded for students who want to try computing without being the only girl in the room.',
+      images: [],
       highlights: [
         'Teach Python, support member projects, and run hackathon preparation.',
         'Pass along STEM opportunities - programs, competitions, deadlines - that are easy to miss if nobody tells you they exist.',
@@ -252,6 +282,7 @@ export const profile: Profile = {
       endDate: null,
       summary:
         'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
+      images: [],
       highlights: [
         'Lead and support Girl Scout STEM Fest, FIRST LEGO League trainings and scrimmages, the Apple Blossom Parade, and school and community demonstrations.',
         'Focus on mentoring girls into technical roles and, the harder half, keeping them there.',
@@ -271,6 +302,7 @@ export const profile: Profile = {
       endDate: '2025-08',
       location: 'Cambridge, MA',
       summary: 'A college course on how autonomous systems perceive, plan, and move. Final grade: A.',
+      images: [],
       highlights: [
         'Sensors, motion planning, SLAM, reinforcement learning, autonomous systems, and computer vision.',
         'Co-led "Solve It, Defend It!" and developed Flood Watch, a concept for tracking floods using drone and autonomous-vehicle data.',
@@ -292,6 +324,7 @@ export const profile: Profile = {
       startDate: '2024-06',
       endDate: '2025-07',
       summary: 'Two Girls Who Code programs back to back, plus the club that runs alongside them.',
+      images: [],
       highlights: [
         'Pathways Program in 2024, Summer Immersion Program in 2025.',
         'Harvard Girls Who Code Club, 2023 to 2026.',
@@ -307,6 +340,7 @@ export const profile: Profile = {
       startDate: '2023-07',
       endDate: '2024-08',
       summary: 'Two Kode With Klossy camps: one in data science, one in web development.',
+      images: [],
       highlights: [],
       tags: ['Data Science', 'Web Development'],
       links: [],
@@ -321,6 +355,7 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A year and a half on a register, running alongside school and two robotics teams.',
+      images: [],
       highlights: [],
       tags: ['Customer Service'],
       links: [],
@@ -336,6 +371,7 @@ export const profile: Profile = {
       endDate: '2025-08',
       summary:
         'A browser game you steer with your hands - no keyboard, no mouse. The webcam reads hand gestures and those become the controls.',
+      images: [],
       highlights: [
         'Built with the p5play and p5.js libraries; hand-gesture input via TensorFlow.js.',
       ],
@@ -356,6 +392,7 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
+      images: [],
       highlights: [
         'First place at Microsoft NERD GirlHacks.',
         'Ultrasonic ranging turned into feedback a person can act on, built and demoed inside a hackathon.',
@@ -372,6 +409,7 @@ export const profile: Profile = {
       endDate: '2025-03',
       summary:
         'A platform connecting people with disabilities to employers who are actually set up to hire them.',
+      images: [],
       highlights: ['First place at NetScout Tech for Good.'],
       tags: ['Web', 'Accessibility', 'Social Impact'],
       links: [{ label: 'Project site', href: 'https://sites.google.com/view/hireable/home' }],
@@ -385,6 +423,7 @@ export const profile: Profile = {
       endDate: '2024-12',
       summary:
         'A CAD design competition, and the clearest test I have had of the SolidWorks I taught myself.',
+      images: [],
       highlights: ['First place.'],
       tags: ['Competition', 'SolidWorks', 'CAD'],
       links: [],

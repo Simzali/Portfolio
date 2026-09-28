@@ -130,7 +130,17 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'Co-captain of a 45-person team. I lead the design of the robot, coach the drive team, and was the former electrical lead.',
-      images: [],
+      images: [
+        {
+          src: '/frc-robot-field.jpg',
+          alt: 'Stormgears 5422 robot on the competition field, surrounded by yellow game pieces',
+        },
+        { src: '/frc-robot-cad.jpg', alt: 'CAD side view of the full robot assembly' },
+        {
+          src: '/frc-robot-cad-detail.jpg',
+          alt: 'CAD detail of the robot internals: belts, pulleys, motors and intake rollers',
+        },
+      ],
       highlights: [
         'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
         'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',

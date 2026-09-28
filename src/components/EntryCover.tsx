@@ -25,6 +25,11 @@ export function EntryCover({ entry }: EntryCoverProps) {
 
   const [cover, ...rest] = entry.images;
 
+  // The organization names the thing far better than the role does. A screen
+  // reader announcing "Co-Captain, CAD / Mechanical Design Lead, Former
+  // Electrical Lead: view 3 images" says everything except which robot.
+  const subject = entry.organization ?? entry.title;
+
   if (cover) {
     const picture = (
       <img
@@ -45,7 +50,7 @@ export function EntryCover({ entry }: EntryCoverProps) {
             <button
               type="button"
               onClick={() => dialog.current?.open(0)}
-              aria-label={`${entry.title}: view ${entry.images.length} images`}
+              aria-label={`${subject}: view ${entry.images.length} images`}
               className="group relative block w-full cursor-pointer"
             >
               {picture}
@@ -57,7 +62,7 @@ export function EntryCover({ entry }: EntryCoverProps) {
             <ImageDialog
               ref={dialog}
               images={entry.images}
-              label={`${entry.title} images`}
+              label={`${subject} images`}
             />
           </>
         ) : (

@@ -446,7 +446,14 @@ export const profile: Profile = {
       endDate: '2025-03',
       summary:
         'A platform connecting people with disabilities to employers who are actually set up to hire them.',
-      images: [],
+      images: [
+        {
+          src: '/netscout-hackathon-certificate.jpg',
+          // Cropped above the signature block on purpose. The two signatures
+          // on the original are not ours to publish at a legible size.
+          alt: 'Certificate of Achievement presented to Simra Ali, First Place, Westford, MA All Girls Hackathon powered by NETSCOUT, March 8th 2025',
+        },
+      ],
       highlights: ['First place at NetScout Tech for Good.'],
       tags: ['Web', 'Accessibility', 'Social Impact'],
       links: [{ label: 'Project site', href: 'https://sites.google.com/view/hireable/home' }],

@@ -133,6 +133,7 @@ export const profile: Profile = {
       highlights: [
         'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
         'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
+        'Ranked alliance captain at both 2026 district qualifiers and advanced to the New England District Championship.',
         'Run CAD and Electrical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
         'Competition Drive Team Coach (2026) and Technician (2025).',
       ],

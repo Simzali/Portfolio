@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>__PAGE_TITLE__</title>
-    <!-- Both filled in from src/content/profile.ts at build time. See ADR-003. -->
+    <!-- All filled in from src/content/profile.ts at build time. See ADR-003
+         for the title and description, ADR-017 for the link-preview tags. -->
     <meta name="description" content="__PAGE_DESCRIPTION__" />
+    __SOCIAL_META__
   </head>
   <body>
     <div id="root"></div>

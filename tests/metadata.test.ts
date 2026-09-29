@@ -5,7 +5,9 @@ import { profile } from '../src/content/profile';
 import {
   DESCRIPTION_TOKEN,
   TITLE_TOKEN,
+  SOCIAL_TOKEN,
   applyPageMetadata,
+  socialMetaTags,
   pageDescription,
   pageTitle,
 } from '../src/content/metadata';
@@ -78,3 +80,51 @@ describe('page metadata', () => {
     expect(indexHtml).not.toContain(profile.name);
   });
 });
+
+
+describe(
+  'link previews',
+  () => {
+    /*
+     * These tags are the only part of the page a crawler ever sees - none of
+     * them run JavaScript - so they have to be right in the served HTML.
+     * See docs/adr/ADR-017-link-previews.md.
+     */
+    it('builds an absolute image URL, because a relative one is dropped', () => {
+      const tags = socialMetaTags({
+        ...fixture,
+        siteUrl: 'https://example.com',
+        socialImage: { src: '/card.jpg', alt: 'A robot' },
+      });
+
+      expect(tags).toContain('content="https://example.com/card.jpg"');
+      expect(tags).toContain('content="summary_large_image"');
+      expect(tags).toContain('A robot');
+    });
+
+    it('omits the image entirely when there is no siteUrl to resolve it', () => {
+      const tags = socialMetaTags({
+        ...fixture,
+        siteUrl: undefined,
+        socialImage: { src: '/card.jpg', alt: 'A robot' },
+      });
+
+      // A relative og:image is ignored by every crawler, so emitting one
+      // would look like a working card and render without a picture.
+      expect(tags).not.toContain('og:image');
+      expect(tags).toContain('content="summary"');
+    });
+
+    it('escapes content that came from the profile', () => {
+      const tags = socialMetaTags(fixture);
+
+      expect(tags).toContain('&quot;Annabella&quot;');
+      expect(tags).not.toContain('content="Ada & ');
+    });
+
+    it('leaves no token behind in the served HTML', () => {
+      expect(indexHtml).toContain(SOCIAL_TOKEN);
+      expect(applyPageMetadata(indexHtml, fixture)).not.toContain(SOCIAL_TOKEN);
+    });
+  },
+);

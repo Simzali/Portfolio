@@ -41,6 +41,16 @@ export const profile: Profile = {
   // and nothing keeps it in step with the source automatically.
   resumeUrl: '/simra-ali-resume.pdf',
 
+  // What a pasted link shows. Both are needed together: the card image has to
+  // be an absolute URL, so it is built from siteUrl. Change siteUrl if the site
+  // ever moves to a custom domain, or every preview will point at the old host.
+  // See docs/adr/ADR-017-link-previews.md.
+  siteUrl: 'https://simzali.netlify.app',
+  socialImage: {
+    src: '/social-card.jpg',
+    alt: 'The FIRST Tech Challenge 3565 competition robot, close up',
+  },
+
   // The page, top to bottom, under the hero. Timeline first: the work is the
   // argument, honors are the corroboration, and contact details are what
   // someone wants *after* they are convinced.
@@ -364,7 +374,7 @@ export const profile: Profile = {
       images: [
         {
           src: '/harvard-floodwatch.jpg',
-          alt: 'The FloodWatch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
+          alt: 'The Flood Watch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
         },
       ],
       highlights: [

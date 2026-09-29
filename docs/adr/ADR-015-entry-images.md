@@ -146,7 +146,7 @@ image at once.
 ## Amendment, 2026-09-28: one image opens too
 
 The decision above said an entry with one image "behaves exactly as before,
-with no button and no badge". That was wrong, and the FloodWatch poster on the
+with no button and no badge". That was wrong, and the Flood Watch poster on the
 Harvard entry is what showed it.
 
 A poster is text. At 224px its body copy is about two pixels tall - present as

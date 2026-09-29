@@ -282,7 +282,12 @@ export const profile: Profile = {
       startDate: '2024-09',
       endDate: null,
       summary: 'I coordinate club operations and still work the shows.',
-      images: [],
+      images: [
+        {
+          src: '/broadcasting-studio.jpg',
+          alt: 'The school broadcasting studio: three studio cameras on tripods facing a green screen, with the anchor desk to one side',
+        },
+      ],
       highlights: [
         'Anchor and production crew: teleprompter, sound board, video switching, scripts, and school-wide broadcasts.',
       ],

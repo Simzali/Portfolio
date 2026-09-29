@@ -417,7 +417,12 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A year and a half on a register, running alongside school and two robotics teams.',
-      images: [],
+      images: [
+        {
+          src: '/market-basket-badge.jpg',
+          alt: "Market Basket employee name badge reading SIM 1ST YEAR, above the printed line I'm At Your Service",
+        },
+      ],
       highlights: [],
       tags: ['Customer Service'],
       links: [],

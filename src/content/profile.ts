@@ -232,6 +232,10 @@ export const profile: Profile = {
           src: '/bwsi-drone-held.jpg',
           alt: 'Holding the racing quadcopter: red frame, 3D-printed canopy and landing legs, and a camera bar across the nose',
         },
+        {
+          src: '/bwsi-simulator.jpg',
+          alt: 'A drone simulator view: a quadcopter flying a corridor past pedestrian figures along a marked path, with depth and colour camera panes and live altitude, speed, tilt and roll readouts',
+        },
       ],
       highlights: [
         'Studied computer vision, state estimation, control systems, navigation, and flight dynamics, then had to make all of it hold together on a drone moving at speed.',

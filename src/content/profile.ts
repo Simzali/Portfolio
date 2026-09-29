@@ -374,7 +374,7 @@ export const profile: Profile = {
       images: [
         {
           src: '/harvard-floodwatch.jpg',
-          alt: 'The FloodWatch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
+          alt: 'The Flood Watch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
         },
       ],
       highlights: [

@@ -142,3 +142,32 @@ image at once.
   it means image weight is now something to watch when adding them.
 - **We will need to revisit this when:** an entry wants video, or when a reader
   on a phone wants to swipe rather than tap arrows.
+
+## Amendment, 2026-09-28: one image opens too
+
+The decision above said an entry with one image "behaves exactly as before,
+with no button and no badge". That was wrong, and the FloodWatch poster on the
+Harvard entry is what showed it.
+
+A poster is text. At 224px its body copy is about two pixels tall - present as
+texture, unreadable as content. It is the image on this page that most needs
+enlarging, and under the original rule it was the one image with nothing to
+click, because the dialog was reserved for galleries.
+
+The count was never the right test. What decides whether an image should open
+is whether it rewards being looked at closely, and a single poster, CAD
+screenshot or certificate rewards it more than a third photograph of a robot
+does. So the cover is a button whenever there is an image at all. The **badge**
+still depends on the count, because `+2` is a statement about how many more
+there are and means nothing when there are none.
+
+Consequences of the amendment:
+
+- **Good:** No image on the page is a dead end any more.
+- **Bad:** Every entry with a photo now carries an interactive control, which
+  sharpens the "Bad" bullet above rather than softening it. Nine entries have
+  images today; nine buttons that were not there before.
+- **Bad:** The dialog mounts alongside every cover instead of only beside
+  galleries. It costs no extra fetch - the dialog opens on `images[0]`, the
+  same URL the cover already has - but there is a second `<img>` in the DOM
+  per entry, and a test that queried alt text globally started matching twice.

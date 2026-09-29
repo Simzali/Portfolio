@@ -223,7 +223,16 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'Four weeks in person at MIT designing, programming, repairing, testing, and racing autonomous drones.',
-      images: [],
+      images: [
+        {
+          src: '/bwsi-drone-gate.jpg',
+          alt: 'The quadcopter flying through a race gate ringed with AprilTag markers, inside the netted arena',
+        },
+        {
+          src: '/bwsi-drone-held.jpg',
+          alt: 'Holding the racing quadcopter: red frame, 3D-printed canopy and landing legs, and a camera bar across the nose',
+        },
+      ],
       highlights: [
         'Studied computer vision, state estimation, control systems, navigation, and flight dynamics, then had to make all of it hold together on a drone moving at speed.',
         'Explored socially aware path planning for autonomous drones, and connected with an MIT PhD researcher working in the field.',
@@ -246,7 +255,13 @@ export const profile: Profile = {
       location: 'New Hampshire',
       summary:
         'A semester inside an engineering company, rotating through the disciplines you never see from a classroom.',
-      images: [],
+      images: [
+        {
+          src: '/bae-wit-certificate.jpg',
+          // Cropped above the signature block, as with the NETSCOUT one.
+          alt: 'Certificate for completing the Electronic Systems Women in Technology program at BAE Systems, presented to Simra Ali, May 12 2026',
+        },
+      ],
       highlights: [
         'Hands-on labs, workshops, tours, and presentations across electrical, microwave/RF, software, mechanical, signal processing, optical, manufacturing, and failure-analysis engineering.',
         'The failure-analysis lab was the one that stuck: an entire discipline built around asking why something broke.',
@@ -302,6 +317,10 @@ export const profile: Profile = {
         'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
       images: [
         {
+          src: '/outreach-frc-demo.jpg',
+          alt: 'Families and children crowded around the Stormgears 5422 robot and a FIRST LEGO League table at a team demonstration, beneath the FIRST banners on the wall',
+        },
+        {
           src: '/outreach-discovery-museum.jpg',
           alt: 'A child driving the Stormgears 5422 robot by handheld controller at a Discovery Museum outreach session, with the team banner and game pieces set up behind',
         },
@@ -325,7 +344,12 @@ export const profile: Profile = {
       endDate: '2025-08',
       location: 'Cambridge, MA',
       summary: 'A college course on how autonomous systems perceive, plan, and move. Final grade: A.',
-      images: [],
+      images: [
+        {
+          src: '/harvard-floodwatch.jpg',
+          alt: 'The FloodWatch project poster: a three-part plan of an AI-powered prediction website, data-collecting drones, and autonomous ground vehicles for damage control',
+        },
+      ],
       highlights: [
         'Sensors, motion planning, SLAM, reinforcement learning, autonomous systems, and computer vision.',
         'Co-led "Solve It, Defend It!" and developed Flood Watch, a concept for tracking floods using drone and autonomous-vehicle data.',
@@ -394,7 +418,13 @@ export const profile: Profile = {
       endDate: '2025-08',
       summary:
         'A browser game you steer with your hands - no keyboard, no mouse. The webcam reads hand gestures and those become the controls.',
-      images: [],
+      images: [
+        {
+          src: '/firefly-gwc-certificate.jpg',
+          // Rendered from the source PDF, then cropped above the signature.
+          alt: 'Girls Who Code certificate of completion, presented to Simra Ali, for the Intro to p5.js and Game Design course',
+        },
+      ],
       highlights: [
         'Built with the p5play and p5.js libraries; hand-gesture input via TensorFlow.js.',
       ],
@@ -415,7 +445,12 @@ export const profile: Profile = {
       location: 'Cambridge, MA',
       summary:
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
-      images: [],
+      images: [
+        {
+          src: '/the-bat-girlhacks-award.jpg',
+          alt: 'The first-place team holding their trophies after the GirlHacks award presentation at Microsoft',
+        },
+      ],
       highlights: [
         'First place at Microsoft NERD GirlHacks.',
         'Ultrasonic ranging turned into feedback a person can act on, built and demoed inside a hackathon.',
@@ -432,7 +467,14 @@ export const profile: Profile = {
       endDate: '2025-03',
       summary:
         'A platform connecting people with disabilities to employers who are actually set up to hire them.',
-      images: [],
+      images: [
+        {
+          src: '/netscout-hackathon-certificate.jpg',
+          // Cropped above the signature block on purpose. The two signatures
+          // on the original are not ours to publish at a legible size.
+          alt: 'Certificate of Achievement presented to Simra Ali, First Place, Westford, MA All Girls Hackathon powered by NETSCOUT, March 8th 2025',
+        },
+      ],
       highlights: ['First place at NetScout Tech for Good.'],
       tags: ['Web', 'Accessibility', 'Social Impact'],
       links: [{ label: 'Project site', href: 'https://sites.google.com/view/hireable/home' }],

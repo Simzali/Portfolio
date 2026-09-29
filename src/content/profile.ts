@@ -296,6 +296,9 @@ export const profile: Profile = {
     },
     {
       id: 'women-in-computer-science',
+      // The poster in this photo carried the club's Google Classroom join code.
+      // It is painted out: a join code on a page built to be found is an open
+      // door to a school resource, years after anyone is watching it.
       kind: 'work',
       title: 'Co-Founder & Co-Lead',
       organization: 'Women in Computer Science, Westford Academy',
@@ -304,7 +307,12 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A club I co-founded for students who want to try computing without being the only girl in the room.',
-      images: [],
+      images: [
+        {
+          src: '/wics-club-fair.jpg',
+          alt: 'Three club members at a school activities fair, sitting in front of a hand-lettered Women in Comp Sci poster with a trophy on the table behind',
+        },
+      ],
       highlights: [
         'Teach Python, support member projects, and run hackathon preparation.',
         'Pass along STEM opportunities - programs, competitions, deadlines - that are easy to miss if nobody tells you they exist.',

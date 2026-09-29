@@ -480,8 +480,8 @@ export const profile: Profile = {
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
       images: [
         {
-          src: '/the-bat-girlhacks-award.jpg',
-          alt: 'The first-place team holding their trophies after the GirlHacks award presentation at Microsoft',
+          src: '/the-bat-microsoft-award.jpg',
+          alt: 'The first-place team holding their trophies beside the Microsoft podium after the GirlHacks award presentation',
         },
       ],
       highlights: [

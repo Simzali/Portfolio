@@ -282,7 +282,12 @@ export const profile: Profile = {
       startDate: '2024-09',
       endDate: null,
       summary: 'I coordinate club operations and still work the shows.',
-      images: [],
+      images: [
+        {
+          src: '/broadcasting-studio.jpg',
+          alt: 'The school broadcasting studio: three studio cameras on tripods facing a green screen, with the anchor desk to one side',
+        },
+      ],
       highlights: [
         'Anchor and production crew: teleprompter, sound board, video switching, scripts, and school-wide broadcasts.',
       ],
@@ -291,6 +296,9 @@ export const profile: Profile = {
     },
     {
       id: 'women-in-computer-science',
+      // The poster in this photo carried the club's Google Classroom join code.
+      // It is painted out: a join code on a page built to be found is an open
+      // door to a school resource, years after anyone is watching it.
       kind: 'work',
       title: 'Co-Founder & Co-Lead',
       organization: 'Women in Computer Science, Westford Academy',
@@ -299,7 +307,12 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A club I co-founded for students who want to try computing without being the only girl in the room.',
-      images: [],
+      images: [
+        {
+          src: '/wics-club-fair.jpg',
+          alt: 'Three club members at a school activities fair, sitting in front of a hand-lettered Women in Comp Sci poster with a trophy on the table behind',
+        },
+      ],
       highlights: [
         'Teach Python, support member projects, and run hackathon preparation.',
         'Pass along STEM opportunities - programs, competitions, deadlines - that are easy to miss if nobody tells you they exist.',
@@ -417,7 +430,12 @@ export const profile: Profile = {
       location: 'Westford, MA',
       summary:
         'A year and a half on a register, running alongside school and two robotics teams.',
-      images: [],
+      images: [
+        {
+          src: '/market-basket-badge.jpg',
+          alt: "Market Basket employee name badge reading SIM 1ST YEAR, above the printed line I'm At Your Service",
+        },
+      ],
       highlights: [],
       tags: ['Customer Service'],
       links: [],
@@ -462,8 +480,8 @@ export const profile: Profile = {
         'An ultrasonic assistive navigation device for people who are blind or have low vision - it finds the obstacle before you do.',
       images: [
         {
-          src: '/the-bat-girlhacks-award.jpg',
-          alt: 'The first-place team holding their trophies after the GirlHacks award presentation at Microsoft',
+          src: '/the-bat-microsoft-award.jpg',
+          alt: 'The first-place team holding their trophies beside the Microsoft podium after the GirlHacks award presentation',
         },
       ],
       highlights: [
@@ -503,7 +521,12 @@ export const profile: Profile = {
       endDate: '2024-12',
       summary:
         'A CAD design competition, and the clearest test I have had of the SolidWorks I taught myself.',
-      images: [],
+      images: [
+        {
+          src: '/vtxcads-cadathon.jpg',
+          alt: 'The VTX CADs announcement card for the Online CADathon, described as an educational, project-based Computer Aided Design competition',
+        },
+      ],
       highlights: ['First place.'],
       tags: ['Competition', 'SolidWorks', 'CAD'],
       links: [],

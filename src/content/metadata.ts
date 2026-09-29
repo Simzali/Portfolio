@@ -18,6 +18,7 @@ import type { Profile } from './schema.ts';
 /** The tokens `index.html` carries in place of the real values. */
 export const TITLE_TOKEN = '__PAGE_TITLE__';
 export const DESCRIPTION_TOKEN = '__PAGE_DESCRIPTION__';
+export const SOCIAL_TOKEN = '__SOCIAL_META__';
 
 /** Browser tab, bookmark, search result heading. */
 export function pageTitle(profile: Profile): string {
@@ -46,9 +47,58 @@ function escapeHtml(value: string): string {
     .replaceAll('"', '&quot;');
 }
 
-/** Substitutes both tokens. Used by the Vite plugin in `vite.config.ts`. */
+/**
+ * The tags a link preview reads: Open Graph for LinkedIn, Slack, iMessage and
+ * the rest, plus the two Twitter ones that nothing else covers.
+ *
+ * `og:image` has to be absolute. A relative path is not resolved by any of
+ * these crawlers - it is dropped, and the card renders with no picture at all,
+ * which is indistinguishable from having written no tags. So when there is no
+ * `siteUrl` to build an absolute URL from, the image tags are left out and the
+ * card falls back to `summary`, which is the small text-only layout and is
+ * honest about having no image.
+ */
+export function socialMetaTags(profile: Profile): string {
+  const absolute = (path: string) =>
+    profile.siteUrl ? new URL(path, profile.siteUrl).href : null;
+
+  const image = profile.socialImage ? absolute(profile.socialImage.src) : null;
+
+  const tags: Array<[string, string]> = [
+    ['og:type', 'website'],
+    ['og:site_name', profile.name],
+    ['og:title', pageTitle(profile)],
+    ['og:description', pageDescription(profile)],
+    ['twitter:title', pageTitle(profile)],
+    ['twitter:description', pageDescription(profile)],
+  ];
+
+  const url = absolute('/');
+  if (url) tags.push(['og:url', url]);
+
+  if (image && profile.socialImage) {
+    tags.push(['og:image', image]);
+    tags.push(['og:image:alt', profile.socialImage.alt]);
+    tags.push(['twitter:image', image]);
+    tags.push(['twitter:card', 'summary_large_image']);
+  } else {
+    tags.push(['twitter:card', 'summary']);
+  }
+
+  // `og:` uses `property`, `twitter:` uses `name`. Crawlers are lenient about
+  // it; validators are not.
+  return tags
+    .map(([key, value]) => {
+      const attribute = key.startsWith('og:') ? 'property' : 'name';
+      return `<meta ${attribute}="${key}" content="${escapeHtml(value)}" />`;
+    })
+    .join('\n    ');
+}
+
+/** Substitutes every token. Used by the Vite plugin in `vite.config.ts`. */
 export function applyPageMetadata(html: string, profile: Profile): string {
   return html
     .replaceAll(TITLE_TOKEN, escapeHtml(pageTitle(profile)))
-    .replaceAll(DESCRIPTION_TOKEN, escapeHtml(pageDescription(profile)));
+    .replaceAll(DESCRIPTION_TOKEN, escapeHtml(pageDescription(profile)))
+    .replaceAll(SOCIAL_TOKEN, socialMetaTags(profile));
 }

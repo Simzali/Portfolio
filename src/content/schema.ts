@@ -178,6 +178,22 @@ export const profileSchema = z.object({
     ['https'],
     'resumeUrl must be a path in public/ or an https:// URL',
   ).optional(),
+
+  /**
+   * Where this site lives, e.g. `https://simzali.netlify.app`. Used only to
+   * build absolute URLs for the link-preview tags: a crawler will not resolve
+   * a relative one, and a relative `og:image` is simply ignored. Leave it out
+   * and those tags are omitted rather than emitted broken. See ADR-017.
+   */
+  siteUrl: safeUrl(['https'], 'siteUrl must be an https:// URL').optional(),
+
+  /**
+   * The picture a link preview shows. Reuses the entry image contract, so it
+   * gets the same URL checking and the same required alt text. Needs
+   * `siteUrl` to be usable. See ADR-017.
+   */
+  socialImage: imageSchema.optional(),
+
   links: z.array(linkSchema).default([]),
   timeline: z.array(timelineEntrySchema).min(1),
   /**

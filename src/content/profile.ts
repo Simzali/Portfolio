@@ -371,7 +371,13 @@ export const profile: Profile = {
       startDate: '2024-06',
       endDate: '2025-07',
       summary: 'Two Girls Who Code programs back to back, plus the club that runs alongside them.',
-      images: [],
+      images: [
+        {
+          src: '/gwc-harvard-certificate.jpg',
+          // Cropped above the signature block, as with the other certificates.
+          alt: 'Girls Who Code certificate of completion, presented to Simra Ali, for the 2025-26 Girls Who Code Club at Harvard College',
+        },
+      ],
       highlights: [
         'Pathways Program in 2024, Summer Immersion Program in 2025.',
         'Harvard Girls Who Code Club, 2023 to 2026.',
@@ -387,7 +393,16 @@ export const profile: Profile = {
       startDate: '2023-07',
       endDate: '2024-08',
       summary: 'Two Kode With Klossy camps: one in data science, one in web development.',
-      images: [],
+      images: [
+        {
+          src: '/kode-with-klossy-certificate.jpg',
+          // Rendered from the source PDF. The signature is painted out rather
+          // than cropped away: it sits beside the award date, so cropping would
+          // have taken the date with it. The ruled line and the printed name
+          // are untouched.
+          alt: 'Kode With Klossy certificate awarded to Simra Ali for successful completion of the 2024 Data Science Curriculum, dated August 2nd 2024',
+        },
+      ],
       highlights: [],
       tags: ['Data Science', 'Web Development'],
       links: [],

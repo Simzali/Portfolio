@@ -521,7 +521,12 @@ export const profile: Profile = {
       endDate: '2024-12',
       summary:
         'A CAD design competition, and the clearest test I have had of the SolidWorks I taught myself.',
-      images: [],
+      images: [
+        {
+          src: '/vtxcads-cadathon.jpg',
+          alt: 'The VTX CADs announcement card for the Online CADathon, described as an educational, project-based Computer Aided Design competition',
+        },
+      ],
       highlights: ['First place.'],
       tags: ['Competition', 'SolidWorks', 'CAD'],
       links: [],

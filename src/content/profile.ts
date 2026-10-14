@@ -34,11 +34,15 @@ export const profile: Profile = {
 
   avatar: '/simra-profile.jpg',
 
-  // The two-page redesign, printed from
-  // `Simra/Resume/2026 Redesign/Simra Ali - Resume (2 page).html` with headless
-  // Chrome, which keeps its hyperlinks live inside the PDF. Regenerate from that
-  // HTML rather than editing the PDF - this copy is what the public page serves,
-  // and nothing keeps it in step with the source automatically.
+  // Two pages, printed from `Simra/Resume/Simra Ali - Resume (source).html` with
+  // headless Chrome, which keeps its 14 hyperlinks live inside the PDF.
+  // Regenerate from that HTML rather than editing the PDF - this copy is what
+  // the public page serves, and nothing keeps it in step with the source
+  // automatically.
+  //
+  // There is a second build of the same resume with every link stripped, for
+  // application portals that discard them and leave the underline behind. That
+  // one is not served here: on a web page the links should work.
   resumeUrl: '/simra-ali-resume.pdf',
 
   // What a pasted link shows. Both are needed together: the card image has to

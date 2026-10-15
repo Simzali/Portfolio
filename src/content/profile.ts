@@ -505,14 +505,22 @@ export const profile: Profile = {
       id: 'solidworks-demo-robots',
       kind: 'project',
       title: 'SOLIDWORKS Demonstration Robots',
-      organization: 'built for a team sponsor',
+      // No organization: "built for a team sponsor" is a description, not the
+      // name of one, and the cover's accessible name prefers the organization -
+      // so a screen reader announced that phrase instead of saying which robot.
+      // The summary carries the sponsor.
       // Two separate stints rather than one run - the first bullet says so,
       // because a single date range cannot.
       startDate: '2024-05',
       endDate: null,
       summary:
         'FRC-style robots built for a team sponsor to demonstrate at events.',
-      images: [],
+      images: [
+        {
+          src: '/demo-robot-cad.jpg',
+          alt: 'SOLIDWORKS assembly of the tennis-ball demonstration robot: chassis, four branded gearmotors, shooter flywheel, tennis balls at the intake, battery, and wiring',
+        },
+      ],
       highlights: [
         'Two robots across two stints, May to September 2024 and from May 2026: a tennis-ball robot with autonomous vision, an intake, and a shooter, and a football robot with an intake, shooter, and elevator arm for placing disks.',
         'Beta-tested SOLIDWORKS tools for FIRST workflows and worked on sharing custom FIRST components through GitHub.',

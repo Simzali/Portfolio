@@ -360,7 +360,7 @@ export const profile: Profile = {
       startDate: '2023-08',
       endDate: null,
       summary:
-        'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
+        'I run outreach for the club: robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
       images: [
         {
           src: '/outreach-frc-demo.jpg',

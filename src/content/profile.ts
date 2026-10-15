@@ -34,11 +34,15 @@ export const profile: Profile = {
 
   avatar: '/simra-profile.jpg',
 
-  // The two-page redesign, printed from
-  // `Simra/Resume/2026 Redesign/Simra Ali - Resume (2 page).html` with headless
-  // Chrome, which keeps its hyperlinks live inside the PDF. Regenerate from that
-  // HTML rather than editing the PDF - this copy is what the public page serves,
-  // and nothing keeps it in step with the source automatically.
+  // Two pages, printed from `Simra/Resume/Simra Ali - Resume (source).html` with
+  // headless Chrome, which keeps its 14 hyperlinks live inside the PDF.
+  // Regenerate from that HTML rather than editing the PDF - this copy is what
+  // the public page serves, and nothing keeps it in step with the source
+  // automatically.
+  //
+  // There is a second build of the same resume with every link stripped, for
+  // application portals that discard them and leave the underline behind. That
+  // one is not served here: on a web page the links should work.
   resumeUrl: '/simra-ali-resume.pdf',
 
   // What a pasted link shows. Both are needed together: the card image has to
@@ -124,6 +128,16 @@ export const profile: Profile = {
       year: '2024-2026',
     },
     {
+      id: 'national-merit-commended',
+      title: 'National Merit Commended Scholar',
+      year: '2026',
+    },
+    {
+      id: 'ap-scholar',
+      title: 'AP Scholar',
+      year: '2026',
+    },
+    {
       id: 'presidents-award-academic-excellence',
       title: "President's Award for Outstanding Academic Excellence",
     },
@@ -170,14 +184,14 @@ export const profile: Profile = {
         },
       ],
       highlights: [
-        'Design competition-robot mechanisms in SolidWorks - chassis, intake, hopper, shooter - and lay out electrical systems that can actually be serviced between matches.',
-        'Led a custom-robot effort that won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
-        'Ranked alliance captain at both 2026 district qualifiers and advanced to the New England District Championship.',
+        'Design competition-robot mechanisms in SOLIDWORKS 3D CAD - a parameterized chassis, intake, hopper, shooter, inverted electrical board, and sensor and camera mounts - laid out so they can actually be serviced between matches.',
+        'Led the design and assembly of the 2026 competition robot, which won the FIRST Quality Award for design intent, robustness, and fabrication quality.',
+        'Advanced to the New England District Championship every season: alliance captain at both 2026 district qualifiers, Minuteman and WPI, and finalist and alliance captain at UNH in 2024.',
         'Run CAD and Electrical trainings and mentor new members. The student I trained on electrical succeeded me as Electrical Lead.',
         'Competition Drive Team Coach (2026) and Technician (2025).',
       ],
       tags: [
-        'SolidWorks',
+        'SOLIDWORKS',
         'CAD',
         'Mechanical Design',
         'Design for Assembly',
@@ -212,11 +226,13 @@ export const profile: Profile = {
         },
       ],
       highlights: [
-        '2026 FIRST Championship, Ross Division Winner.',
+        'Trained a Limelight neural network vision pipeline on a Roboflow dataset of 12,000+ labeled game-piece images, as an alternative to traditional color thresholding.',
+        'Experimenting with game-piece detection to develop density-aware path planning for autonomous pollen collection.',
+        '2026 FIRST Championship, Ross Division Winner - and set the FTC world record for highest match score.',
         '2026 Massachusetts State Champion and Winning Alliance Captain.',
         'Team earned the Control, Inspire, Innovate, and Connect Awards.',
       ],
-      tags: ['Computer Vision', 'Onshape', 'CAD', 'Strategy', 'FTC'],
+      tags: ['Computer Vision', 'Machine Learning', 'Onshape', 'CAD', 'Strategy', 'FTC'],
       links: [
         { label: 'Team site', href: 'https://sites.google.com/westfordk12.us/ghostrobotics' },
       ],
@@ -232,7 +248,7 @@ export const profile: Profile = {
       endDate: '2026-08',
       location: 'Cambridge, MA',
       summary:
-        'Four weeks in person at MIT designing, programming, repairing, testing, and racing autonomous drones.',
+        'Software Lead and researcher. Four weeks in person at MIT designing, programming, repairing, testing, and racing autonomous drones.',
       images: [
         {
           src: '/bwsi-drone-gate.jpg',
@@ -248,10 +264,11 @@ export const profile: Profile = {
         },
       ],
       highlights: [
-        'Studied computer vision, state estimation, control systems, navigation, and flight dynamics, then had to make all of it hold together on a drone moving at speed.',
-        'Explored socially aware path planning for autonomous drones, and connected with an MIT PhD researcher working in the field.',
+        'Programmed computer vision, state estimation, control, navigation, and flight-dynamics models, then had to make all of it hold together on a drone moving at speed.',
+        'Wrote the autonomous racing software in simulation - predictive speed control, yaw-based cornering, line-loss recovery, and altitude adjustment for gate navigation - then deployed it to the drone and flight-tested it.',
+        'Pursuing independent research into socially aware path planning for autonomous drones, after connecting with an MIT PhD researcher working in the field.',
         'Honorable Mention, BWSI "You Belong in STEM" essay contest.',
-        'Worked up to it through BWSI online coursework from February 2024: Basics of ASICs, Microelectronics & Hardware Development, Python Core, Version Control and UNIX, and Git/GitHub.',
+        'Worked up to it through BWSI coursework from February 2024: Basics of ASICs, Microelectronics & Hardware Development, Python Core, Version Control and UNIX, and Git/GitHub - and carried on afterwards with Foundations of Entrepreneurship, as a founder.',
       ],
       tags: ['Drones', 'Autonomous Systems', 'Computer Vision', 'Control Systems', 'Python'],
       links: [{ label: 'BWSI', href: 'https://bwsi.mit.edu/' }],
@@ -277,7 +294,7 @@ export const profile: Profile = {
         },
       ],
       highlights: [
-        'Hands-on labs, workshops, tours, and presentations across electrical, microwave/RF, software, mechanical, signal processing, optical, manufacturing, and failure-analysis engineering.',
+        'Learned directly from BAE engineers through hands-on labs, workshops, tours, and presentations across electrical, microwave/RF, software, mechanical, signal processing, optical, manufacturing, and failure-analysis engineering.',
         'The failure-analysis lab was the one that stuck: an entire discipline built around asking why something broke.',
       ],
       tags: ['RF', 'Signal Processing', 'Hardware', 'Electrical'],
@@ -337,11 +354,13 @@ export const profile: Profile = {
     {
       id: 'stem-outreach-mentorship',
       kind: 'work',
-      title: 'STEM Outreach & Mentorship',
-      startDate: '2023-09',
+      title: 'Outreach Coordinator',
+      organization: 'Middlesex County Robotics Club',
+      location: 'Boxboro, MA',
+      startDate: '2023-08',
       endDate: null,
       summary:
-        'Robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
+        'I run outreach for the club: robotics demos, trainings, and workshops for kids who have not decided yet whether this is for them.',
       images: [
         {
           src: '/outreach-frc-demo.jpg',
@@ -483,6 +502,25 @@ export const profile: Profile = {
     },
 
     {
+      id: 'solidworks-demo-robots',
+      kind: 'project',
+      title: 'SOLIDWORKS Demonstration Robots',
+      organization: 'built for a team sponsor',
+      // Two separate stints rather than one run - the first bullet says so,
+      // because a single date range cannot.
+      startDate: '2024-05',
+      endDate: null,
+      summary:
+        'FRC-style robots built for a team sponsor to demonstrate at events.',
+      images: [],
+      highlights: [
+        'Two robots across two stints, May to September 2024 and from May 2026: a tennis-ball robot with autonomous vision, an intake, and a shooter, and a football robot with an intake, shooter, and elevator arm for placing disks.',
+        'Beta-tested SOLIDWORKS tools for FIRST workflows and worked on sharing custom FIRST components through GitHub.',
+      ],
+      tags: ['SOLIDWORKS', 'CAD', 'Mechanical Design', 'Computer Vision'],
+      links: [],
+    },
+    {
       id: 'the-bat',
       kind: 'project',
       title: 'The Bat',
@@ -501,6 +539,7 @@ export const profile: Profile = {
       highlights: [
         'First place at Microsoft NERD GirlHacks.',
         'Ultrasonic ranging turned into feedback a person can act on, built and demoed inside a hackathon.',
+        'Open-sourced the 3D-printable CAD and published step-by-step assembly and wiring instructions using commonly available parts, so somebody else can build one.',
       ],
       tags: ['Ultrasonic', 'Sensors', 'Assistive Tech', 'Hardware'],
       links: [{ label: 'Project site', href: 'https://simzali.github.io/Echo-Awareness/' }],
@@ -522,8 +561,11 @@ export const profile: Profile = {
           alt: 'Certificate of Achievement presented to Simra Ali, First Place, Westford, MA All Girls Hackathon powered by NETSCOUT, March 8th 2025',
         },
       ],
-      highlights: ['First place at NetScout Tech for Good.'],
-      tags: ['Web', 'Accessibility', 'Social Impact'],
+      highlights: [
+        'First place at NetScout Tech for Good.',
+        'Integrates AI with database and web technologies.',
+      ],
+      tags: ['AI', 'Web', 'Accessibility', 'Social Impact'],
       links: [{ label: 'Project site', href: 'https://sites.google.com/view/hireable/home' }],
     },
     {
